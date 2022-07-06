@@ -1,0 +1,60 @@
+button:hover {
+    cursor:pointer;
+  }
+  input {
+  text-align: center;
+  }
+  .container{
+    display:flex;
+  }
+  .container-title{
+    display:flex;
+    margin-top:10%;
+    justify-content: center;
+    align-items: center;
+  }
+  #student-container{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  #student-button{
+    background-color:blue;
+    color:white;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 5px;
+  }
+  #student-button:hover{
+    background-color: lightblue;
+  }
+  
+  #student-form{
+    display:flex;
+    flex-direction:column;
+    margin-top: 10px;
+  }
+  
+  #teacher-container{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+  }
+  #teacher-button{
+    background-color:green;
+    color:white;
+    margin-top: 10px;
+    padding: 10px 60px;
+    border: none;
+    border-radius: 5px;
+  }
+  #teacher-form{
+    display:flex;
+    flex-direction:column;
+    margin-top: 10px;
+  }
+  #teacher-button:hover{
+    background-color: lightgreen;
+  }
