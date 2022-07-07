@@ -1,22 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Teacher Page</title>
+        <link rel="stylesheet" href="teacher_style.css" />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Page</title>
-    <link rel="stylesheet" href="teacher_style.css" />
-</head>
+    <body>
+        <h1 id="teacher-heading">Welcome!</h1>
+        <main id="teacher-page-container">
+            <div id="teacher-settings">
+                <button id="teacher-logout">Log out</button>
+            </div>
+            <div id="teacher-creation-bar">
+                <div id="teacher-sudent-controls">
+                  <div id="teacher-sudent-info" >
+                  <span>Student Name: 
+                    <input
+                        id="stu-fullname"
+                        type="text"
+                        placeholder="Student Name"
+                    />
+                  </span>
+                  <span>Class:
+                    <select id="add-class-name" type="text" placeholder="Class">
+                        <option value="math">Math</option>
+                        <option value="enlgish">English</option>
+                        <option value="art">Art</option>
+                        <option value="history">History</option>
+                    </select>
+                  </span>
+                  </div>
+                    <button
+                        id="teacher-add-stu"
+                        onclick="add_student_controller()"
+                    >
+                        Add Student
+                    </button>
+                </div>
 
-<body>
-    <h1 id="teacher-heading">Hi</h1>
-    <main id="teacher-page-container">
-        <button>Add Student</button>
-        <button>Delete Student</button>
-        <button>Create Question Bank</button>
-    </main>
-    <script src="teacher_script.js"></script>
-</body>
+                <div id="teacher-question-bank">
+                    <span
+                        >Question :
+                        <input
+                            id="question-input"
+                            type="text"
+                            placeholder="Question"
+                    /></span>
+                    <div id="answer-choice-section">
+                        <span
+                            >Choice 1:
+                            <input
+                                id="answer-choice-1"
+                                type="text"
+                                placeholder="Choice 1"
+                        /></span>
+                        <span class="right-side-choices"
+                            >Choice 2:
+                            <input
+                                id="answer-choice-2"
+                                type="text"
+                                placeholder="Choice 2"
+                        /></span>
+                        <span
+                            >Choice 3:
+                            <input
+                                id="answer-choice-3"
+                                type="text"
+                                placeholder="Choice 3"
+                        /></span>
+                        <span class="right-side-choices"
+                            >Choice 4:
+                            <input
+                                id="answer-choice-4"
+                                type="text"
+                                placeholder="Choice 4"
+                        /></span>
+                    </div>
+                    <div id="question-creation">
+                        <span
+                            >Answer Choice:
+                            <select
+                                id="correct-answer-choice"
+                                type="text"
+                                placeholder="Class"
+                            >
+                                <option value="correct-choice-1">
+                                    Choice 1
+                                </option>
+                                <option value="correct-choice-1">
+                                    Choice 2
+                                </option>
+                                <option value="correct-choice-1">
+                                    Choice 3
+                                </option>
+                                <option value="correct-choice-1">
+                                    Choice 4
+                                </option>
+                            </select>
+                        </span>
+                        <button id="teacher-add-question">
+                            Create Question
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <div id="currently-added">
+                <div id="currently-added-students">
+                  <h2>Students</h2>
+                  <table id="student-info-table">
+                  </table>
+                </div>
+                <!--<div id="currently-added-questions">Questions</div> -->
+            </div>
+        </main>
+        <script src="teacher_script.js"></script>
+        <script src="../script.js"></script>
+    </body>
 </html>

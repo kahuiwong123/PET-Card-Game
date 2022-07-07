@@ -1,0 +1,39 @@
+input {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#teacher-page-container{
+  display:flex;
+  flex-direction: column;
+}
+#teacher-creation-bar{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+#teacher-sudent-controls{
+  display:flex;
+  flex-direction: column;
+}
+#teacher-sudent-info{
+  display:flex;
+  flex-direction: column;
+  margin: 5px;
+}
+#teacher-question-bank{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#answer-choice-section{
+  margin: 5px;
+  width: 490px;
+}
+.right-side-choices{
+  margin-left:10px;
+}

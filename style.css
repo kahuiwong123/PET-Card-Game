@@ -1,8 +1,9 @@
-button:hover {
+  button:hover {
     cursor:pointer;
   }
   input {
-  text-align: center;
+    text-align: center;
+    margin-bottom: 5px;
   }
   .container{
     display:flex;
