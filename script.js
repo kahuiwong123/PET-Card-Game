@@ -3,7 +3,7 @@ let student_data = [];
 let teacher_data = [{ username: "user", password: "pass" }];
 let teacher_username = "";
 
-const load_students = () => {
+const load_student = () => {
   const saved_students = JSON.parse(localStorage.getItem("students"));
   if (Array.isArray(saved_students) && saved_students.length > 0) {
     student_data = saved_students;
@@ -12,7 +12,7 @@ const load_students = () => {
   }
 }
 
-load_students();
+load_student();
 
 // View
 const create_html = (html) => {

@@ -2,8 +2,42 @@ input {
     text-align: center;
     margin-bottom: 5px;
 }
+body{
+  margin:0px;
+}
+#dashboard-header-container{
+  background-color: slategray;
+  margin:0px;
+}
+#dashboard-header{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 24px;
+  margin-right: 24px;
+  height: 50px;
+}
+
+#header-buttons{
+  display:flex;
+  flex-direction: row;
+  gap:10px;
+}
+
+.header-button:hover{
+  opacity: 50%;
+}
+
+#dashboard-upper{
+  display:flex;
+  flex-direction: row;
+  flex:0 0 auto;
+}
 
 #teacher-page-container{
+  height: 100%;
+  width: 100%;
   display:flex;
   flex-direction: column;
 }
@@ -11,9 +45,6 @@ input {
   display:flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 #teacher-sudent-controls{
   display:flex;
@@ -24,16 +55,44 @@ input {
   flex-direction: column;
   margin: 5px;
 }
-#teacher-question-bank{
+
+#dashboard-upper{
   display:flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
-#answer-choice-section{
-  margin: 5px;
-  width: 490px;
+#student-stats-section{
+  border:1px solid black;
+  height: 480px;
+  width: 540px;
+  text-align: center;
 }
-.right-side-choices{
-  margin-left:10px;
+
+#currently-added{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color: slategrey;
 }
+#currently-added h2{
+  text-align: center;
+}
+#student-info-table{
+  border-collapse: collapse;
+}
+#student-info-table th{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  border: 1px solid black;
+}
+#student-info-table td, #student-info-table th {
+  padding-right: 50px;
+  border: 1px solid black;
+}
+

@@ -31,41 +31,56 @@ const code_exists = (code) => {
 //View
 const generate_table = () => {
   const table = document.getElementById("student-info-table");
-  table.innerHTML = "";
-  const header = create_html(`<tr>
-                      <th>Name</th>
-                      <th>Class</th>
-                      <th>Code</th>
+  if(!(table === null)){
+    table.innerHTML = "";
+  }
+  const header = create_html(`<tr class="table-row-elem">
+                      <th class="table-col-1">Name</th>
+                      <th class="table-col-2">Class</th>
+                      <th class="table-col-3">Code</th>
+                      <th class="table-col-4">Delete</th>
                     </tr>`);
   table.appendChild(header);
   student_data.forEach(student => {
     const row_el = document.createElement("tr");
-
+    row_el.classList.add("table-row-elem");
+    
     const name_col = document.createElement("td");
     name_col.textContent = student.name;
+    name_col.classList.add("table-col-1");
 
     const class_col = document.createElement("td");
     class_col.textContent = student.class;
-
+    class_col.classList.add("table-col-2");
+    
     const code_col = document.createElement("td");
     code_col.textContent = student.code;
+    code_col.classList.add("table-col-3");
 
+    const del_col = document.createElement("td");
+    
     const button_col = document.createElement("button");
     button_col.textContent = "Delete";
     button_col.name = student.code;
     button_col.onclick = function () { delete_student_controller(button_col.name) };
+    button_col.classList.add("table-col-4");
 
+    del_col.appendChild(button_col);
     row_el.appendChild(name_col);
     row_el.appendChild(class_col);
     row_el.appendChild(code_col);
-    row_el.appendChild(button_col);
+    row_el.appendChild(del_col);
     table.appendChild(row_el);
   });
 }
-setTimeout(generate_table, 1);
+setTimeout(generate_table, 100);
 
 //Controller
 document.getElementById("teacher-logout").onclick = function () { location.href = "../index.html" };
+
+document.getElementById("create-question-btn").onclick = function () {
+  location.href = "Question/question.html";
+}
 
 const add_student_controller = () => {
   const student_name = document.getElementById("stu-fullname");

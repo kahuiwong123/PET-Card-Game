@@ -1,33 +1,51 @@
+  body{
+    background-color: #1f263b;
+  }
   button:hover {
     cursor:pointer;
   }
   input {
     text-align: center;
     margin-bottom: 5px;
+    
+    background: none;
+    outline:none;
+    color:black;
+    
+    border: 2px solid slategrey;
+    border-radius: 5px;
+    padding: 2px 0px;
+  }
+  input:hover{
+    border: 2px solid black;
   }
   .container{
     display:flex;
   }
   .container-title{
     display:flex;
-    margin-top:10%;
+    margin-top:5%;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10%;
   }
   #student-container{
     display:flex;
     flex-direction:column;
-    justify-content: center;
+    
     align-items: center;
+    height: 167px;
   }
   #student-button{
     background-color:blue;
     color:white;
-    padding: 10px 60px;
+    padding: 0px 60px;
     border: none;
     border-radius: 5px;
+    margin-top: 0px;
   }
   #student-button:hover{
+    padding: 0px 55px;
     background-color: lightblue;
   }
   
@@ -47,7 +65,7 @@
     background-color:green;
     color:white;
     margin-top: 10px;
-    padding: 10px 60px;
+    padding: 0px 60px;
     border: none;
     border-radius: 5px;
   }
@@ -57,5 +75,6 @@
     margin-top: 10px;
   }
   #teacher-button:hover{
+    padding: 0px 55px;
     background-color: lightgreen;
   }

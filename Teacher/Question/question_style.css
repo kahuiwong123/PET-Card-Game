@@ -1,0 +1,86 @@
+input{
+  margin:5px;
+}
+body{
+  margin:0px;
+}
+#nav-container{
+  background-color: slategray;
+  margin:0px;
+}
+#question-bank-nav{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 24px;
+  margin-right: 24px;
+  height: 50px;
+}
+#question-creating-container{
+  margin-top:24px;
+  margin-bottom:24px;
+  display:flex;
+  flex-direction: row;
+  height:auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#question-bar-container{
+  display:flex;
+  flex-direction: column;
+  flex:0 0 auto;
+}
+#teacher-question-bank{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#answer-choice-section{
+  width: 510px;
+}
+#add-question-footer{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap:25px;
+}
+.right-side-choices{
+  margin-left:10px;
+}
+
+#question-creation-display{
+  border:1px solid black;
+  width: 480px;
+  height: 360px;
+  text-align: center;
+}
+
+#currently-added-questions{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  background-color:slategrey;
+}
+
+#added-questions h2{
+  text-align: center;
+}
+#questions-answer-table{
+  border-collapse: collapse;
+}
+#questions-answer-table th{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: left;
+  border: 1px solid black;
+}
+#questions-answer-table td, #questions-answer-table th {
+  padding-right: 50px;
+  border: 1px solid black;
+}
