@@ -1,111 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Create Questions</title>
-        <link rel="stylesheet" href="question_style.css" />
-    </head>
-    <body>
-        <div id="question-bar-container">
-          <div id="nav-container">
-            <div id="question-bank-nav">
-                <h1>Question Bank</h1>
-                <div id="qustion-nav-buttons">
-                    <button id="back-dashboard-button">Dashboard</button>
-                    <button>Log Out</button>
-                </div>
-            </div>
-          </div>
-            <div id="question-creating-container">
-              <div id="question-creation-display">
-                <div>Question Display Mockup</div>
-              </div>
-                <div id="question-creation">
-                    <div id="teacher-question-bank">
-                        <span
-                            >Question:
-                            <input
-                                name="question-input"
-                                id="question-input"
-                                type="text"
-                                placeholder="Question"
-                            />
-                        </span>
-                        <div id="answer-choice-section">
-                            <span
-                                >Choice 1:
-                                <input
-                                    id="correct-choice-1"
-                                    type="text"
-                                    placeholder="Choice 1"
-                            /></span>
-                            <span class="right-side-choices"
-                                >Choice 2:
-                                <input
-                                    id="correct-choice-2"
-                                    type="text"
-                                    placeholder="Choice 2"
-                            /></span>
-                            <span
-                                >Choice 3:
-                                <input
-                                    id="correct-choice-3"
-                                    type="text"
-                                    placeholder="Choice 3"
-                            /></span>
-                            <span class="right-side-choices"
-                                >Choice 4:
-                                <input
-                                    id="correct-choice-4"
-                                    type="text"
-                                    placeholder="Choice 4"
-                            /></span>
-                        </div>
-                    </div>
-                    <div id="add-question-footer">
-                        <span
-                            >Answer Choice:
-                            <select
-                                id="correct-answer-choice"
-                                type="text"
-                                placeholder="Class"
-                            >
-                                <option value="correct-choice-blank"></option>
-                                <option value="correct-choice-1">
-                                    Choice 1
-                                </option>
-                                <option value="correct-choice-2">
-                                    Choice 2
-                                </option>
-                                <option value="correct-choice-3">
-                                    Choice 3
-                                </option>
-                                <option value="correct-choice-4">
-                                    Choice 4
-                                </option>
-                            </select>
-                        </span>
-                        <button
-                            id="teacher-add-question"
-                            onclick="add_question_controller()"
-                        >
-                            Create Question
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-            <div id="currently-added-questions">
-                <div id="added-questions">
-                    <h2>Questions</h2>
-                    <table id="questions-answer-table"></table>
-                </div>
-            </div>
-        </div>
-        <script src="question_script.js"></script>
-        <script src="../teacher_script.js"></script>
-        <script src="../../script.js"></script>
-    </body>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Create Questions</title>
+	<link rel="stylesheet" href="question_style.css" />
+	<script src="../../jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+	<div id="question-bar-container">
+		<div id="nav-container">
+			<div id="question-bank-nav">
+				<h1>Question Bank</h1>
+				<div id="qustion-nav-buttons">
+					<button id="back-dashboard-button">Dashboard</button>
+					<button id=question-logout-btn>Log out</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="question-body-container">
+			<div id="question-creating-container">
+				<div id="question-creation-display">
+					<div>Question Display Mockup</div>
+				</div>
+
+
+				<div id="qustion-right-container">
+					<div id="creating-deploy-questions">
+						<button id="create-test-btn">Create Test</button>
+						<form id="create-test-form">
+							<label for="test-name">Test name:</label>
+							<input type="text" placeholder="Enter test name:" id="test-name" name="test-name" required>
+							<label for="test-subject">Subject:</label>
+							<select id="test-subject" name="test-subject" required>
+								<option value="math">Math</option>
+								<option value="enlgish">English</option>
+								<option value="art">Art</option>
+								<option value="history">History</option>
+							</select>
+							<button id="save-test-btn" onclick="save_test_controller()">Save test</button>
+						</form>
+					</div>
+					<form id="question-creation">
+						<div id="select-test-container">
+							<label for="select-test">Add questions to:</label>
+							<select name="select-test" id="select-test" type="text">
+								<!--get_select_test()-->
+							</select>
+						</div>
+						<div id="teacher-question-bank">
+							<label for="question-input">Question:</label>
+							<input name="question-input" id="question-input" type="text" placeholder="Question" required />
+							<div id="answer-choice-section">
+								<label for="correct-choice-1">Choice 1:</label>
+								<input name="correct-choice-1" id="correct-choice-1" type="text" placeholder="Choice 1" required />
+								<label for="correct-choice-2">Choice 2:</label>
+								<input name="correct-choice-2" id="correct-choice-2" type="text" placeholder="Choice 2" required />
+								<label for="correct-choice-3">Choice 3:</label>
+								<input name="correct-choice-3" id="correct-choice-3" type="text" placeholder="Choice 3" required />
+								<label for="correct-choice-4">Choice 4:</label>
+								<input name="correct-choice-4" id="correct-choice-4" type="text" placeholder="Choice 4" required />
+							</div>
+						</div>
+						<div id="add-question-footer">
+							<label for="correct-answer-choice">Answer Choice:</label>
+							<select id="correct-answer-choice" name="correct-answer-choice" type="text" placeholder="Class">
+								<option value="correct-choice-blank" disabled>Select the right choice: </option>
+								<option value="correct-choice-1">
+									Choice 1
+								</option>
+								<option value="correct-choice-2">
+									Choice 2
+								</option>
+								<option value="correct-choice-3">
+									Choice 3
+								</option>
+								<option value="correct-choice-4">
+									Choice 4
+								</option>
+							</select>
+							<button id="teacher-add-question" type="button" onclick="add_question_controller()">
+								Add Question
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<div id="currently-added-questions">
+			<div id="test-table-container">
+				<h2>Tests</h2>
+				<table id="test-table"></table>
+			</div>
+
+			<div id="added-questions">
+				<h2>Questions</h2>
+				<table id="questions-answer-table"></table>
+			</div>
+		</div>
+	</div>
+	<script src="question_script.js"></script>
+	<script src="../teacher_script.js"></script>
+	<script src="../../script.js"></script>
+</body>
+
 </html>

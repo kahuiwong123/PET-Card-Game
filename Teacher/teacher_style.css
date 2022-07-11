@@ -14,8 +14,8 @@ body{
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-left: 24px;
-  margin-right: 24px;
+  margin-left: 5%;
+  margin-right: 5%;
   height: 50px;
 }
 
@@ -33,6 +33,13 @@ body{
   display:flex;
   flex-direction: row;
   flex:0 0 auto;
+}
+
+#upper-dash-container{
+  width:1100px;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-between;
 }
 
 #teacher-page-container{
@@ -70,6 +77,13 @@ body{
   width: 540px;
   text-align: center;
 }
+#classes-placeholder{
+  border:1px solid black;
+  height: 270px;
+  width:360px;
+  text-align: center;
+  margin-bottom: 50px;
+}
 
 #currently-added{
   display:flex;
@@ -90,9 +104,11 @@ body{
   padding-bottom: 5px;
   text-align: left;
   border: 1px solid black;
+  
 }
 #student-info-table td, #student-info-table th {
   padding-right: 50px;
   border: 1px solid black;
 }
+
 

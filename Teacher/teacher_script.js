@@ -4,7 +4,7 @@ const save_data = (key, data) => {
 }
 
 const add_student = (name, s_class, code) => {
-  student_data.push({ name: name, class: s_class, code: code });
+  student_data.push({ name: name, class: s_class, code: code, tests: [] });
   save_data("students", student_data);
   alert("Student successfully added!");
 }
@@ -31,7 +31,7 @@ const code_exists = (code) => {
 //View
 const generate_table = () => {
   const table = document.getElementById("student-info-table");
-  if(!(table === null)){
+  if (!(table === null)) {
     table.innerHTML = "";
   }
   const header = create_html(`<tr class="table-row-elem">
@@ -44,7 +44,7 @@ const generate_table = () => {
   student_data.forEach(student => {
     const row_el = document.createElement("tr");
     row_el.classList.add("table-row-elem");
-    
+
     const name_col = document.createElement("td");
     name_col.textContent = student.name;
     name_col.classList.add("table-col-1");
@@ -52,17 +52,17 @@ const generate_table = () => {
     const class_col = document.createElement("td");
     class_col.textContent = student.class;
     class_col.classList.add("table-col-2");
-    
+
     const code_col = document.createElement("td");
     code_col.textContent = student.code;
     code_col.classList.add("table-col-3");
 
     const del_col = document.createElement("td");
-    
+
     const button_col = document.createElement("button");
     button_col.textContent = "Delete";
     button_col.name = student.code;
-    button_col.onclick = function () { delete_student_controller(button_col.name) };
+    button_col.onclick = function() { delete_student_controller(button_col.name) };
     button_col.classList.add("table-col-4");
 
     del_col.appendChild(button_col);
@@ -76,9 +76,9 @@ const generate_table = () => {
 setTimeout(generate_table, 100);
 
 //Controller
-document.getElementById("teacher-logout").onclick = function () { location.href = "../index.html" };
+document.getElementById("teacher-logout").onclick = function() { location.href = "../index.html" };
 
-document.getElementById("create-question-btn").onclick = function () {
+document.getElementById("create-question-btn").onclick = function() {
   location.href = "Question/question.html";
 }
 

@@ -92,7 +92,7 @@ const student_login = () => {
 }
 
 const student_login2 = (event) => {
-  if(event.keyCode == 13){
+  if (event.keyCode == 13) {
     student_login()
   }
 }
@@ -108,14 +108,14 @@ const teacher_login = () => {
   else if (validate_teacher(teacher_user.value, teacher_pass.value)) {
     alert("Teacher login successful!");
     teacher_username = teacher_user.value;
-    teacher_login_btn.onclick = window.location.href="Teacher/teacher.html"; 
+    teacher_login_btn.onclick = window.location.href = "Teacher/teacher.html";
   } else {
     alert("Wrong teacher login information! Please try again.");
   };
 }
 
 const teacher_login2 = (event) => {
-  if(event.keyCode == 13){
+  if (event.keyCode == 13) {
     teacher_login()
   }
 }

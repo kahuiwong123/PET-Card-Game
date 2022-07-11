@@ -17,6 +17,10 @@ body{
   margin-right: 24px;
   height: 50px;
 }
+#question-body-container{
+  display:flex;
+  justify-content: center;
+}
 #question-creating-container{
   margin-top:24px;
   margin-bottom:24px;
@@ -25,8 +29,8 @@ body{
   height:auto;
   justify-content: space-evenly;
   align-items: center;
+  width: 1200px;
 }
-
 #question-bar-container{
   display:flex;
   flex-direction: column;
@@ -36,20 +40,18 @@ body{
   display:flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+}
+#question-input{
+  padding: 0px 135px;
 }
 #answer-choice-section{
-  width: 510px;
+  width: 520px;
 }
 #add-question-footer{
   display:flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  
   gap:25px;
-}
-.right-side-choices{
-  margin-left:10px;
 }
 
 #question-creation-display{
@@ -61,26 +63,34 @@ body{
 
 #currently-added-questions{
   display:flex;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: space-evenly;
   padding-top: 25px;
   padding-bottom: 25px;
   background-color:slategrey;
 }
 
-#added-questions h2{
+#test-table-container{
+	margin-right: 1rem;
+}
+
+#added-questions h2, #test-table-container h2 {
   text-align: center;
 }
-#questions-answer-table{
+
+#questions-answer-table, #test-table {
   border-collapse: collapse;
 }
-#questions-answer-table th{
+#questions-answer-table th, #test-table th{
   padding-top: 5px;
   padding-bottom: 5px;
   text-align: left;
   border: 1px solid black;
 }
-#questions-answer-table td, #questions-answer-table th {
+#questions-answer-table td, #questions-answer-table th,
+#test-table td, #test-table th {
   padding-right: 50px;
   border: 1px solid black;
 }
+
+
