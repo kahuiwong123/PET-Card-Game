@@ -1,6 +1,4 @@
 // Model
-let questions = [];
-let test = { name: "name", subject: "math", num_questions: 100, questions: questions };
 let test_bank;
 
 const load_data = (key) => {
@@ -18,9 +16,11 @@ const add_question = (question, correct_choice, choices, question_code, test_nam
 	const test = test_bank.find(t => t.name === test_name.value);
 	choices_objects = [];
 	choices.forEach(choice => {
-		let correct;
-		(choice.id === correct_choice.value) ? correct = true : correct = false;
-		choices_objects.push({ choice_val: choice.value, correct: correct });
+		if (choice.value !== "") {
+			let correct;
+			(choice.id === correct_choice.value) ? correct = true : correct = false;
+			choices_objects.push({ choice_val: choice.value, correct: correct });
+		}
 	});
 	test.num_questions += 1;
 	test.questions.push({ question: question.value, all_choices: choices_objects, code: question_code });
@@ -37,7 +37,6 @@ const delete_question = (button_name, test_name) => {
 		}
 	});
 	test.num_questions -= 1;
-	alert("Question has been deleted!");
 	save_data("test_bank", test_bank);
 }
 
@@ -63,14 +62,41 @@ const delete_test = (btn_id) => {
 $(function() {
 	get_select_test();
 	generate_test_table();
+
+	$("option[value='correct-choice-blank']").attr("selected", "selected");
+
 	$("#create-test-btn").on("click", function() {
 		$("#create-test-form").slideToggle("fast", "linear");
+	});
+
+	$("#correct-choice-1").on("keyup change", function() {
+		const checker = $.trim($(this).val()).length === 0;
+		$("option[value='correct-choice-1']").attr("disabled", checker);
+	});
+
+	$("#correct-choice-2").on("keyup change", function() {
+		const checker = $.trim($(this).val()).length === 0;
+		$("option[value='correct-choice-2']").attr("disabled", checker);
+	});
+
+	$("#correct-choice-3").on("keyup change", function() {
+		const checker = $.trim($(this).val()).length === 0;
+		$("option[value='correct-choice-3']").attr("disabled", checker);
+	});
+
+	$("#correct-choice-4").on("keyup change", function() {
+		const checker = $.trim($(this).val()).length === 0;
+		$("option[value='correct-choice-4']").attr("disabled", checker);
+	});
+
+	$("#correct-choice-5").on("keyup change", function() {
+		const checker = $.trim($(this).val()).length === 0;
+		$("option[value='correct-choice-5']").attr("disabled", checker);
 	});
 });
 
 document.getElementById("back-dashboard-button").onclick = function() { location.href = "../teacher.html" };
 document.getElementById("question-logout-btn").onclick = function() { location.href = "../../index.html" };
-
 const get_select_test = () => {
 	const select_container = document.getElementById("select-test");
 	select_container.innerHTML = "<option value='no-value' disabled>---</option>";
@@ -84,10 +110,7 @@ const get_select_test = () => {
 
 const generate_test_table = () => {
 	const table = document.getElementById("test-table");
-	if (table !== null) {
-		table.innerHTML = "";
-	}
-
+	table.innerHTML = "";
 	if (test_bank.length !== 0) {
 		const header = create_html(`
 		<tr>
@@ -99,88 +122,83 @@ const generate_test_table = () => {
 		</tr>
 	`);
 		table.appendChild(header);
+
+		test_bank.forEach(test => {
+			const row = document.createElement("tr");
+			const name = document.createElement("td");
+			name.textContent = test.name;
+			const subject = document.createElement("td");
+			subject.textContent = test.subject;
+			const num_questions = document.createElement("td");
+			num_questions.textContent = test.num_questions;
+			const view_btn = document.createElement("button");
+			view_btn.textContent = "View questions";
+			view_btn.onclick = function() { generate_question_table(test.name) };
+			view_btn.classList.add("view-btn");
+			const delete_btn = document.createElement("td");
+			delete_btn.innerHTML = "<input type='checkbox' >";
+			delete_btn.firstElementChild.id = test.name;
+			delete_btn.firstElementChild.onclick = function() { delete_test_controller(delete_btn.firstElementChild.id) };
+			row.appendChild(delete_btn);
+			row.appendChild(name);
+			row.appendChild(subject);
+			row.appendChild(num_questions);
+			row.appendChild(view_btn);
+			table.appendChild(row);
+		});
 	}
-	test_bank.forEach(test => {
-		const row = document.createElement("tr");
-		const name = document.createElement("td");
-		name.textContent = test.name;
-		const subject = document.createElement("td");
-		subject.textContent = test.subject;
-		const num_questions = document.createElement("td");
-		num_questions.textContent = test.num_questions;
-		const view_btn = document.createElement("button");
-		view_btn.textContent = "View questions";
-		view_btn.onclick = function() { generate_question_table(test.name) };
-		const delete_btn = document.createElement("td");
-		delete_btn.innerHTML = "<input type='checkbox'>";
-		delete_btn.firstElementChild.id = test.name;
-		delete_btn.firstElementChild.onclick = function() { delete_test_controller(delete_btn.firstElementChild.id) };
-		row.appendChild(delete_btn);
-		row.appendChild(name);
-		row.appendChild(subject);
-		row.appendChild(num_questions);
-		row.appendChild(view_btn);
-		table.appendChild(row);
-	});
 }
 
 const generate_question_table = (test_name) => {
 	const test = test_bank.find(t => t.name === test_name);
 	const table = document.getElementById("questions-answer-table");
-
-	if (!(table === null)) {
-		table.innerHTML = "";
-	}
-	const header = create_html(`<tr name="table-title">
+	table.innerHTML = "";
+	if (test.questions.length !== 0) {
+		const header = create_html(`<tr name="table-title">
                                 <th>Question</th>
                                 <th>Answer Choices</th>
                                 <th>Correct Choice</th>
                                 <th>Delete</th>
                               </tr>`);
-	table.appendChild(header);
-	test.questions.forEach(question => {
-		const row_el = document.createElement("tr");
+		table.appendChild(header);
+		test.questions.forEach(question => {
+			const row_el = document.createElement("tr");
 
-		const que_col = document.createElement("td");
-		que_col.textContent = question.question;
+			const que_col = document.createElement("td");
+			que_col.textContent = question.question;
 
-		const choice1_col = document.createElement("tr");
-		choice1_col.textContent = "1.) " + question.all_choices[0].choice_val;
-		const choice2_col = document.createElement("tr");
-		choice2_col.textContent = "2.) " + question.all_choices[1].choice_val;
-		const choice3_col = document.createElement("tr");
-		choice3_col.textContent = "3.) " + question.all_choices[2].choice_val;
-		const choice4_col = document.createElement("tr");
-		choice4_col.textContent = "4.) " + question.all_choices[3].choice_val;
+			const correct_obj = question.all_choices.find(choice => choice.correct === true);
+			const corr_choice_col = document.createElement("td");
+			corr_choice_col.textContent = (question.all_choices.indexOf(correct_obj) + 1) + ".) " + correct_obj.choice_val;
 
-		const correct_obj = question.all_choices.find(choice => choice.correct === true);
-		const corr_choice_col = document.createElement("td");
-		corr_choice_col.textContent = (question.all_choices.indexOf(correct_obj) + 1) + ".) " + correct_obj.choice_val;
+			//delete question
+			const edit_col = document.createElement("button");
+			edit_col.textContent = "Edit";
+			const button_col = document.createElement("button");
+			button_col.textContent = "Delete";
+			button_col.name = question.code;
+			button_col.onclick = function() { confirm_delete_question(button_col.name, test.name) };
 
-		//delete question
-		const edit_col = document.createElement("button");
-		edit_col.textContent = "Edit";
-		const button_col = document.createElement("button");
-		button_col.textContent = "Delete";
-		button_col.name = question.code;
-		button_col.onclick = function() { delete_question_controller(button_col.name, test.name) };
+			const btn_el = document.createElement("td");
+			btn_el.appendChild(edit_col);
+			btn_el.appendChild(button_col);
+			const ans_el = document.createElement("td");
 
-		const btn_el = document.createElement("td");
-		btn_el.appendChild(edit_col);
-		btn_el.appendChild(button_col);
+			for (let i = 0; i < question.all_choices.length; i++) {
+				if (question.all_choices[i].choice_val !== "") {
+					const choice_col = document.createElement("tr");
+					choice_col.textContent = `${i + 1}.) ` + question.all_choices[i].choice_val;
+					ans_el.appendChild(choice_col);
+				}
+			}
 
-		const ans_el = document.createElement("td");
-		ans_el.appendChild(choice1_col);
-		ans_el.appendChild(choice2_col);
-		ans_el.appendChild(choice3_col);
-		ans_el.appendChild(choice4_col);
-
-		row_el.appendChild(que_col);
-		row_el.appendChild(ans_el);
-		row_el.appendChild(corr_choice_col);
-		row_el.appendChild(btn_el);
-		table.appendChild(row_el);
-	});
+			row_el.appendChild(que_col);
+			row_el.appendChild(ans_el);
+			row_el.appendChild(corr_choice_col);
+			row_el.appendChild(btn_el);
+			table.appendChild(row_el);
+		});
+	}
 }
 
 // Controller
@@ -192,42 +210,16 @@ const add_question_controller = () => {
 	const choice_2 = document.getElementById("correct-choice-2");
 	const choice_3 = document.getElementById("correct-choice-3");
 	const choice_4 = document.getElementById("correct-choice-4");
+	const choice_5 = document.getElementById("correct-choice-5");
 	const correct_choice = document.getElementById("correct-answer-choice");
-	const ans_choices = [choice_1, choice_2, choice_3, choice_4];
-	const ans_choices2 = [choice_1.value, choice_2.value, choice_3.value, choice_4.value];
+	const ans_choices = [choice_1, choice_2, choice_3, choice_4, choice_5];
+	let inputs = [choice_1.value, choice_2.value, choice_3.value, choice_4.value, choice_5.value];
+	inputs = inputs.filter(element => {
+		return element !== "";
+	});
 	const question_code = test_name.value + "/" + question.value + "/" + correct_choice.value;
-	let proceed = true;
 
-	if (test_bank.length === 0) {
-		alert("There are currently no tests!");
-		proceed = false;
-	}
-
-	else if (test.questions.some(q => q.question === question.value)) {
-		alert("This question is already on the test!");
-		proceed = false;
-	}
-
-	else if (empty_choice_exists(ans_choices)) {
-		proceed = false;
-	}
-
-	else if (question.value === "") {
-		alert("Question cannot be empty!");
-		proceed = false;
-	}
-
-	else if (correct_choice.value === "correct-choice-blank") {
-		alert("Correct choice cannot be empty!");
-		proceed = false;
-	}
-
-	else if ((new Set(ans_choices2)).size !== ans_choices2.length) {
-		alert("Choices cannot contain duplicates!");
-		proceed = false;
-	}
-
-	if (proceed) {
+	if (validate_add_question(test, inputs, question.value, correct_choice.value)) {
 		add_question(question, correct_choice, ans_choices, question_code, test_name);
 		alert("Question successfully added!");
 		generate_question_table(test_name.value);
@@ -235,21 +227,46 @@ const add_question_controller = () => {
 	}
 }
 
-const delete_question_controller = (button_name, test_name) => {
-	delete_question(button_name, test_name);
-	generate_question_table(test_name);
-	generate_test_table();
+const validate_add_question = (test, input_array, question_val, correct_choice_val) => {
+	if (test_bank.length === 0) {
+		alert("There are currently no tests!");
+		return false;
+	}
+
+	else if (question_val === "") {
+		const question_text = document.getElementById("question-input");
+		question_text.placeholder = "Question cannot be empty!";
+		return false;
+	}
+
+	else if (correct_choice_val === "correct-choice-blank") {
+		alert("Please choose the correct answer choice!");
+		return false;
+	}
+	else if (input_array.length < 2) {
+		alert("Question must have at least 2 choices!");
+		return false;
+	}
+
+	else if (test.questions.some(q => q.question === question_val)) {
+		alert("This question is already on the test!");
+		return false;
+	}
+
+	else if ((new Set(input_array)).size !== input_array.length) {
+		alert("Choices cannot contain duplicates!");
+		return false;
+	}
+
+	return true;
 }
 
-const empty_choice_exists = (ans_choices) => {
-	for (let i = 0; i < ans_choices.length; i++) {
-		if (ans_choices[i].value === "") {
-			alert(`Answer Choice ${i + 1} cannot be empty!`);
-			return true;
-		}
-	}
-	return false;
+const delete_question_controller = (button_name, test_name) => {
+	delete_question(button_name, test_name);
+	generate_test_table();
+	generate_question_table(test_name);
 }
+
 
 const save_test_controller = () => {
 	const test_name = document.getElementById("test-name");
@@ -262,13 +279,40 @@ const save_test_controller = () => {
 		alert("One of the inputs is empty! Please try again.");
 	} else {
 		save_test(test_name, test_subject);
-		generate_test_table();
 		get_select_test();
+		generate_test_table();
 	}
 }
 
-const delete_test_controller = (btn_id) => {
-	delete_test(btn_id);
+let curr_btn = "";
+let test_name_var = "";
+remove_item = true;
+
+const popup_remove = () => {
+	document.getElementById("delete-pop-up").style.visibility = "hidden";
+	remove_item = true;
+	delete_test(curr_btn);
 	generate_test_table();
 	get_select_test();
+	generate_question_table(test_name_var);
 }
+
+const popup_keep = () => {
+	remove_item = false;
+	document.getElementById("delete-pop-up").style.visibility = "hidden";
+	document.getElementById(curr_btn).checked = false;
+}
+
+const delete_test_controller = (btn_id, test_name) => {
+	curr_btn = btn_id;
+	test_name_var = test_name;
+	document.getElementById("delete-pop-up").style.visibility = "visible";
+	get_select_test();
+}
+
+const confirm_delete_question = (button_name, test_name) => {
+	if (confirm("Do you want to delete this question?")) {
+		delete_question_controller(button_name, test_name);
+	}
+}
+

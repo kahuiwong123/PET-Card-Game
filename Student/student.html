@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Classes</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game</title>
+	<link rel="stylesheet" href="student_style.css" />
 </head>
+
 <body>
-    
+	<div id="students-container">
+		<div id="students-heading">
+			<h1 id="game-heading">" " Game</h1>
+		</div>
+		<div id="game-container">
+
+			<div id="game-state">
+				<div id="question-state">
+					Question: 0/10
+				</div>
+				<div id="question-timer">
+					Timer:
+				</div>
+			</div>
+			<div id="game-curr-question">
+				<span>Question: " "</span>
+				<div id="game-curr-choices">
+
+				</div>
+			</div>
+			<div id="game-answer-choices">
+				<form>
+					<div id="choices-upper">
+						<input type="text" placeholder="choice 1">
+						<input type="text" placeholder="choice 2">
+					</div>
+					<div id="choices-lower">
+						<input type="text" placeholder="choice 3">
+						<input type="text" placeholder="choice 4">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
+
 </html>
