@@ -1,0 +1,24 @@
+#students-container{
+  display:flex;
+  flex-direction: column;
+}
+#game-heading{
+  text-align: center;
+}
+#game-state{
+  border: 2px solid black;
+  display:flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content:space-between;
+}
+
+#game-answer-choices{
+  border: 2px solid black;
+  display:flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content:center;
+}
+
+

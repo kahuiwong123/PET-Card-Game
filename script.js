@@ -10,6 +10,17 @@ const load_student = () => {
 	}
 }
 
+const load_classes = () => {
+	const saved_classes = JSON.parse(localStorage.getItem("classes"));
+  let default_classes = ["art", "english", "history", "math"];
+	if (Array.isArray(saved_classes) && saved_classes.length > 4) {
+		return saved_classes;
+	} else {
+		return default_classes;
+	}
+}
+
+let classes_data = load_classes();
 let student_data = load_student();
 
 // View
@@ -24,12 +35,11 @@ const student_inputs = () => {
 	const student_form = document.getElementById("student-form");
 	if (typeof (student_form) === "undefined" || student_form === null) {
 		const inputs = create_html(`
-    <div id="student-form">
-        <input id="student_name" type="text" placeholder="Name" onkeypress="student_login2(event)">
-        <input id="student_class" type="text" placeholder="Class" onkeypress="student_login2(event)">
-        <input id="student_code" type="text" placeholder="Code" onkeypress="student_login2(event)">
-        <button id="student-login" onclick="student_login()">Login</button>
-    </div>`
+    <form id="student-form" action="Student/student.html" method="get">
+        <input id="student_name" name="student_name" type="text" placeholder="Name" onkeypress="student_login2(event)" required>
+        <input id="student_code"  name="student_code" type="text" placeholder="Code" onkeypress="student_login2(event)" required>
+        <button id="student-login" type="submit" onclick="student_login()">Login</button>
+    </form>`
 		);
 		container.appendChild(inputs);
 	} else {
@@ -63,9 +73,9 @@ const clear_textbox = (textbox) => {
 }
 
 // Controller
-const validate_student = (s_name, s_class, s_code) => {
+const validate_student = (s_name, s_code) => {
 	return student_data.some(student => {
-		return student.name === s_name && student.class === s_class && student.code === s_code;
+		return student.name === s_name && student.code === s_code;
 	});
 }
 
@@ -77,19 +87,17 @@ const validate_teacher = (user, pass) => {
 
 const student_login = () => {
 	const student_name = document.getElementById("student_name");
-	const student_class = document.getElementById("student_class");
 	const student_code = document.getElementById("student_code");
 	const log_in_btn = document.getElementById("student-login");
-	if (student_name.value == "" || student_class.value == "" || student_code.value == "") {
+	if (student_name.value == "" || student_code.value == "") {
 		alert("One of the fields is empty! Please try again.");
 	}
-	else if (validate_student(student_name.value, student_class.value, student_code.value)) {
+	else if (validate_student(student_name.value, student_code.value)) {
 		alert("Student login successful!");
 		log_in_btn.onclick = window.location.href = "Student/student.html";
 	} else {
 		alert("Wrong student login information! Please try again.");
 		student_name.value = "";
-		student_class.value = "";
 		student_code.value = "";
 	}
 }

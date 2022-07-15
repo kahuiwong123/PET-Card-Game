@@ -55,16 +55,14 @@ input{
 #question-body-container{
   display:flex;
   flex-direction: column;
-
-
   overflow: hidden;
   background:white;
   height: 100%;
   width: 100%;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius: 25px;
-  
 }
+
 #question-creating-container{
   
   display:flex;

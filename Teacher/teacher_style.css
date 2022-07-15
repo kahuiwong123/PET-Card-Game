@@ -75,24 +75,25 @@ main{
   margin-right: 1.5%;
   margin-left: 1.5%;
   width: 100%;
-
   overflow: hidden;
   
 }
-#dash-body{
+#dash-body {
   background:white;
   display:flex;
   flex-direction: column;
   width: 100%;
   height: 100%;
-  border:1px solid black;
+  border: 1px solid black;
   border-radius: 25px;
 }
+
 #dashboard-upper{
   display:flex;
   flex-direction: row;
   flex:0 0 auto;
   height:50%;
+	
 }
 
 #upper-dash-container{
@@ -123,10 +124,35 @@ main{
   height:100%;
 
 }
-#teacher-sudent-info{
+
+#teacher-student-info {
+	display: flex;
+	flex-direction: column;
+  width: 100%;
+
+}
+
+#add-student-bar,
+#add-class-bar {
   display:flex;
-  flex-direction: column;
-  margin: 5px;
+	justify-content: space-between;
+	border: 1px solid black;
+	align-items: center;
+	margin: 0;
+	padding: 0.5em;
+}
+
+#teacher-student-info input,
+#teacher-student-info button {
+	margin: 0;
+}
+
+#add-class-name {
+	width: 80px;
+}
+
+#select-student-code {
+	width: 250px;
 }
 
 #dashboard-upper{
@@ -139,6 +165,7 @@ main{
   width: 100%;
   height:40%;
 }
+
 #student-stats-section{
   border:1px solid black;
   width:50%;
@@ -191,40 +218,50 @@ main{
   width: 100%;
   margin-bottom: 2.5%
 }
+
 #currently-added h2{
   text-align: center;
 }
+
 #student-info-table{
   border-collapse: collapse;
 }
+
 #student-info-table th{
   padding-top: 5px;
   padding-bottom: 5px;
-  text-align: left;
+  text-align: center;
   border: 1px solid black;
-
   background-color:#3882F6;
-
   position: sticky;
   top: 0;
 }
+
 #student-info-table td, #student-info-table th {
   padding-right: 50px;
   border: 1px solid black;
 }
-#student-info-table td{
+#student-info-table td {
   overflow:hidden;
 }
+
 .student-row:hover {
 	box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.3);
 }
 
 #select-send-test {
-	width: 50%;
+	width: 250px;
 }
 
+#select-send-class {
+	max-width: 20%;
+}
 
-
+#class-btn-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3em;
+}
 
 
 

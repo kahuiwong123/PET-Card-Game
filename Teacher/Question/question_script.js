@@ -1,6 +1,4 @@
 // Model
-let test_bank;
-
 const load_data = (key) => {
 	const saved_data = JSON.parse(localStorage.getItem(key));
 	if (Array.isArray(saved_data) && saved_data.length > 0) {
@@ -10,7 +8,8 @@ const load_data = (key) => {
 	}
 }
 
-test_bank = load_data("test_bank");
+let classes = load_data("classes");
+let test_bank = load_data("test_bank");
 
 const add_question = (question, correct_choice, choices, question_code, test_name) => {
 	const test = test_bank.find(t => t.name === test_name.value);
@@ -62,7 +61,7 @@ const delete_test = (btn_id) => {
 $(function() {
 	get_select_test();
 	generate_test_table();
-
+	get_class_options();
 	$("option[value='correct-choice-blank']").attr("selected", "selected");
 
 	$("#create-test-btn").on("click", function() {
@@ -105,6 +104,16 @@ const get_select_test = () => {
 		option.value = test.name;
 		option.textContent = test.name;
 		select_container.appendChild(option);
+	});
+}
+
+const get_class_options = () => {
+	const select_el = document.querySelector("#test-subject");
+	classes.forEach(clas => {
+		const option = document.createElement("option");
+		option.value = clas.toLowerCase();
+		option.textContent = clas.toUpperCase();
+		select_el.appendChild(option);
 	});
 }
 

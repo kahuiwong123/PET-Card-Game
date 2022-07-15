@@ -25,6 +25,7 @@
 						<button id="create-class-btn" class="header-button">View Class</button>
 						<button id="create-question-btn" class="header-button" onclick="location.href='Question/question.html'">View
 							Questions</button>
+            <button id="log-out-btn" onclick="window.location.href='../Student/student.html'">Student Preview</button>
 					</div>
 					<div id="teacher-lougot-btn">
 						<button id="teacher-logout" class=" header-button" onclick="location.href='../index.html'">Log out</button>
@@ -46,36 +47,34 @@
 											multiple></select>
 										<label for="select-send-class">to</label>
 										<select id="select-send-class">
-                
-											<option value="" disabled>---</option>
-											<option value="math">Math</option>
-											<option value="english">English</option>
-											<option value="art">Art</option>
-											<option value="history">History</option>
-
 										</select>
 										<button id="confirm-send-btn" onclick="confirm_send_test_controller()"
 											type="button">Confirm</button>
 									</form>
 									<div id="send-error"></div>
+									<div id="correct-msg"></div>
 								</div>
 
-								<div id="teacher-sudent-info">
-									<span>Create New Student:
-										<input id="stu-fullname" type="text" placeholder="Student Name" />
-									</span>
-									<span>Class:
-										<select id="add-class-name" type="text" placeholder="Class">
-											<option value="math">Math</option>
-											<option value="english">English</option>
-											<option value="art">Art</option>
-											<option value="history">History</option>
-										</select>
-									</span>
-									<div>
-										<button id="teacher-add-stu" onclick="add_student_controller()">
-											Add Student
-										</button>
+								<div id="teacher-student-info">
+									<div id="add-student-bar">
+										<div>
+											<label for="stu-fullname">Create New Student: </label>
+											<input id="stu-fullname" type="text" placeholder="Student Name">
+										</div>
+										<button id="teacher-add-stu" onclick="add_student_controller()">Add Student</button>
+									</div>
+
+									<div id="add-class-bar">
+										<select data-placeholder="Select students" id="select-student-code" class="chzn-select"
+											multiple></select>
+										<div>
+											<label for="add-class">Select</label>
+											<select id="add-class-name"></select>
+										</div>
+										<div id="class-btn-container">
+											<button id="assign-class-btn" onclick="assign_class_controller()">Assign class</button>
+											<button id="deassign-class-btn" onclick="deassign_class_controller()">Delete class</button>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -88,13 +87,28 @@
 
 				<div id="dashboard-lower">
 					<div id="all-classes">
-						<div>Class Settings</div>
+						<h2>Class Settings</h2>
 						<form>
 							<label for="class_name">Create New Class: </label>
-							<input type="text" id="class_name" placeholder="Class name">
-							<input type="submit" value="Create Class">
+							<input type="text" id="new_class_name" placeholder="Class name">
+							<input type="button" id="create-class-btn" value="Create Class" onclick="add_class_controller()">
 						</form>
+
+						<form>
+							<label for="rem_class">Remove Class: </label>
+							<select id="remove_class_sel">
+
+							</select>
+							<input type="button" id="remove-class-btn" value="Remove Class" onclick="remove_class_controller()">
+						</form>
+
+
+
+						<div id="create-class-msg"></div><br>
+						<h3>Available classes</h3>
+						<div id="current-classes"></div>
 					</div>
+
 
 					<div id="currently-added">
 						<div id="currently-added-students">

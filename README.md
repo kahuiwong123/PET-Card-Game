@@ -54,6 +54,8 @@
     3. group students by class
     4. work on teacher settings
 
+    7/14/22
+    1.brainstorm and work on student
     
 # Ideas
     1. Optimize / improve project using jQuery, React, and SQL 
@@ -73,10 +75,17 @@
     1. implmented popup when checkbox is clicked for deleting test
 		2. added more optional choices
 
-    7/12/22
+    7/13/22
     1. updated visuals for dashboard and question bank
     2. implemented feature where teacher can send exams to certain classes
 
+    7/14/22
+    1. implemented teacher settings, now they are able to create and remove classes
+    2. students and classes are now sorted in alphabetical order
+
+
+
+    
 # End Goal
     1. Implement Student Statistics Section which allows the teacher to see which topics the students are struggling on.
     2. Have a timing feature so students are timed, similarily to a real testing enviormnment 
@@ -84,3 +93,13 @@
 
 # Questions
     1. Suggestions and Clarification on what we should do for the outline.
+
+
+
+
+# Suggestion
+    1. Do teacher have unique accounts?
+    2. Improve visual level, have the classes listed instead of commas
+    3. how do we make it so the student side feel more like a game. (make it so the progression through the test feel more game like.)
+    4.(https://app.nearpod.com/presentation?pin=X58HG, https://wordwall.net/) <- example that makes it feel more like an game
+    5. think about what makes a game fun? maybe progression?
