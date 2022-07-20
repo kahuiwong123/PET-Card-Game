@@ -2,27 +2,40 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Student Page</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="student_style.css">
-	<script defer src="student_script.js"></script>
-	<script src="../script.js"></script>
-	<script src="../jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="student_style.css">
+  <script defer src="student_script.js"></script>
+  <script src="../script.js"></script>
+  <script src="../jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-	<div id="student-info-header"></div>
-	<h1 id="welcome-header"></h1>
-	<button id="log-out-btn" onclick="window.location.href='../index.html'">Log out</button>
-	<table id="student-test-table">
-		<h2>My Classes</h2>
-	</table>
-	
+  <header id="page-header">
+    <div id="page-header-left">
+      <img
+        src="//images.squarespace-cdn.com/content/v1/55f8a7d8e4b0c432ff779320/826f8016-beb9-45a0-b79e-12994e1b0891/PE+Long+Logo.png?format=1500w">
+      <h1 id="welcome-header"></h1>
+    </div>
+    <div id="page-header-right">
+      <div id="student-info-header"></div>
+      <button id="log-out-btn" onclick="window.location.href='../index.html'">Log out</button>
+    </div>
+  </header>
+
+  <aside id="sidebar">
+    <section id="class-list"></section>
+    <section id="student-calendar"></section>
+  </aside>
+
+  <main id="student-info">
+
+  </main>
 </body>
 
 </html>

@@ -7,44 +7,41 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Game</title>
 	<link rel="stylesheet" href="test_style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+	<script src="./test_script.js" defer></script>
+	<script src="../../jquery-3.6.0.min.js"></script>
+	<script src="../../Teacher/Question/question_script.js" defer></script>
+	<script src="../../script.js" defer></script>
 </head>
 
 <body>
-	<div id="students-container">
-		<div id="students-heading">
-			<h1 id="game-heading">" " Game</h1>
-		</div>
-		<div id="game-container">
+	<main id="main-container">
 
-			<div id="game-state">
-				<div id="question-state">
-					Question: 0/10
+		<section id="test-container">
+			<header>
+				<div id="progress-container">
+					<div id="progress-bar">
+						<div id="green-progress"></div>
+					</div>
+					<div id="progress-text"></div>
 				</div>
-				<div id="question-timer">
-					Timer:
-				</div>
-			</div>
-			<div id="game-curr-question">
-				<span>Question: " "</span>
-				<div id="game-curr-choices">
+				<div id="timer"></div>
+			</header>
 
-				</div>
+			<div id="question-body">
+				<h1 id="question-title"></h1> <!-- generate question -->
+				<hr>
+				<form id="answer-choices"></form> <!-- generate answer choices -->
 			</div>
-			<div id="game-answer-choices">
-				<form>
+
+			<input id="resume-btn" type="button" value="Resume Later">
+		</section>
 
 
-            <!-- Create button / text input depening on question -->
-						<input type="text" placeholder="choice 1">
-						<input type="text" placeholder="choice 2">
-					
-						<input type="text" placeholder="choice 3">
-						<input type="text" placeholder="choice 4">
-					  <input type="text" placeholder="choice 5">
-				</form>
-			</div>
-		</div>
-	</div>
+		<section id="game-container"></section>
+	</main>
 </body>
 
 </html>

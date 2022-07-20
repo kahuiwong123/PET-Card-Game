@@ -3,20 +3,15 @@
 }
 html, body{
    margin: 0;
-   height: 100%;
-  
-}
-table{
-  overflow-y:scroll; 
-  height: 100%;
-  display: block;
-  
+   height: 100%;  
 }
 main{
   height: 100%;
   width: 100%;
   background: #3882F6;
+	padding-bottom: 10px;
 }
+
 input{
   margin:5px;
 }
@@ -27,10 +22,12 @@ input{
   background-color: #3882F6;
   width: 15%;
 }
+
 #question-bank-nav{
   display:flex;
   flex-direction: column;
   align-items: center;
+	text-align: center;
   justify-content: space-between;
   margin-left: 5%;
   margin-right: 5%;
@@ -40,6 +37,7 @@ input{
 #welcome-text{
   text-align:right;
   margin-bottom: 5px;
+	margin-top: -3px;
   margin-right: 5%;
   color:white;
 }
@@ -54,17 +52,15 @@ input{
 }
 #question-body-container{
   display:flex;
+	height: 100%;
   flex-direction: column;
-  overflow: hidden;
+	overflow: auto;
   background:white;
-  height: 100%;
-  width: 100%;
-  border: 1px solid black;
-  border-radius: 25px;
+  border: none;
+  border-radius: 20px;
 }
 
 #question-creating-container{
-  
   display:flex;
   flex-direction: row;
   height: 100%;
@@ -85,6 +81,8 @@ input{
   height: 100%;
   width: 100%;
 }
+
+
 #question-right-container{
   width: 50%;
   height: 100%;
@@ -93,6 +91,7 @@ input{
   border: 1px solid black;
   
 }
+
 #answer-choice-section {
   width: 620px;
 	display: grid;
@@ -127,7 +126,6 @@ input{
   height: 100%;
   width: 50%;
   margin-left: 5%;
-    
   text-align: center;
 }
 
@@ -146,17 +144,13 @@ input{
   align-items: center;
   justify-content: space-between;
   height: 100%;
-
   margin-bottom: 2.5%;
-
-  
 }
 
 #test-table-container{
   width: 50%;
   margin-left: 5%;
   height: 100%;
-
   border:1px solid black;
 }
 #added-questions{
@@ -164,29 +158,55 @@ input{
   margin-right: 5%;
   height: 100%;
   width: 50%;
-  
   border:1px solid black;
 }
 
 #added-questions h2, #test-table-container h2 {
   text-align: center;
+	margin: 0.5em 0;
 }
 
-#questions-answer-table, #test-table {
+#added-questions, #test-table-container {
+	overflow: auto;
+}
+
+#questions-answer-table, 
+#test-table {
   border-collapse: collapse;
+	overflow: auto;
+  height: auto;
 }
-#questions-answer-table th, #test-table th{
-  padding-top: 5px;
-  padding-bottom: 5px;
-  text-align: right;
-  border: 1px solid black;
+
+#questions-answer-table {
+	display: none;
 }
+
 #questions-answer-table td, #questions-answer-table th,
 #test-table td, #test-table th {
-  padding-right: 50px;
-  border: 1px solid black;
+	text-align: center;
+	padding: 0.5em 0;
 }
 
+.inner-tr {
+	border: none;
+}
+
+#questions-answer-table th {
+	width: 20%;
+	background-color: #3882F6;
+}
+
+#test-table th {
+	background-color: #3882F6;
+}
+
+.edit-btn {
+	margin-right: 5px;
+}
+
+.correct-choice-td {
+	text-align: left !important;
+}
 
 #delete-pop-up{
   display:flex;
@@ -200,7 +220,6 @@ input{
   top: 40%;
   margin-left: auto; 
   margin-right: auto;
-
   background-color: #3882F6;
   border-radius: 10px;
 }
@@ -242,5 +261,19 @@ input{
   background-color: green;
   color:white;
 }
+
+tr {
+	border-bottom: 1px dotted gray;
+	transition: background-color 0.15s;
+	text-align: left;
+	margin-bottom: 0;
+}
+
+tr:hover {
+	background-color: #dddddd;
+	cursor: pointer;
+}
+
+
 
 

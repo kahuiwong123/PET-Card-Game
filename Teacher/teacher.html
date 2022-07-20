@@ -25,7 +25,7 @@
 						<button id="create-class-btn" class="header-button">View Class</button>
 						<button id="create-question-btn" class="header-button" onclick="location.href='Question/question.html'">View
 							Questions</button>
-            <button id="log-out-btn" onclick="window.location.href='../Student/student.html'">Student Preview</button>
+						<button id="log-out-btn" onclick="window.location.href='../Student/student.html'">Student Preview</button>
 					</div>
 					<div id="teacher-lougot-btn">
 						<button id="teacher-logout" class=" header-button" onclick="location.href='../index.html'">Log out</button>
@@ -97,7 +97,6 @@
 						<form>
 							<label for="rem_class">Remove Class: </label>
 							<select id="remove_class_sel">
-
 							</select>
 							<input type="button" id="remove-class-btn" value="Remove Class" onclick="remove_class_controller()">
 						</form>
@@ -105,18 +104,16 @@
 
 
 						<div id="create-class-msg"></div><br>
-						<h3>Available classes</h3>
-						<div id="current-classes"></div>
+						<h2>Available classes</h2>
+						<ul id="current-classes"></ul>
 					</div>
 
-
+            
 					<div id="currently-added">
-						<div id="currently-added-students">
-							<h2>Students</h2>
-							<div id="student-table">
-								<table id="student-info-table"></table>
-							</div>
-						</div>
+						<h2>Students</h2>
+            <div id="scroll-table">
+						  <table id="student-info-table"></table>
+            </div>
 					</div>
 				</div>
 			</div>

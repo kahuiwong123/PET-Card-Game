@@ -92,6 +92,10 @@ $(function() {
 		const checker = $.trim($(this).val()).length === 0;
 		$("option[value='correct-choice-5']").attr("disabled", checker);
 	});
+
+	$(".view-btn").on("click", function() {
+		$("#questions-answer-table").fadeIn("normal", "linear");
+	});
 });
 
 document.getElementById("back-dashboard-button").onclick = function() { location.href = "../teacher.html" };
@@ -123,7 +127,7 @@ const generate_test_table = () => {
 	if (test_bank.length !== 0) {
 		const header = create_html(`
 		<tr>
-			<th/>
+			<th>Delete</th>
 			<th>Test name</th>
       <th>Subject</th>
       <th>Number of questions</th>
@@ -131,7 +135,6 @@ const generate_test_table = () => {
 		</tr>
 	`);
 		table.appendChild(header);
-
 		test_bank.forEach(test => {
 			const row = document.createElement("tr");
 			const name = document.createElement("td");
@@ -140,19 +143,21 @@ const generate_test_table = () => {
 			subject.textContent = test.subject;
 			const num_questions = document.createElement("td");
 			num_questions.textContent = test.num_questions;
-			const view_btn = document.createElement("button");
-			view_btn.textContent = "View questions";
-			view_btn.onclick = function() { generate_question_table(test.name) };
-			view_btn.classList.add("view-btn");
 			const delete_btn = document.createElement("td");
-			delete_btn.innerHTML = "<input type='checkbox' >";
+			delete_btn.innerHTML = "<input type='checkbox'>";
 			delete_btn.firstElementChild.id = test.name;
 			delete_btn.firstElementChild.onclick = function() { delete_test_controller(delete_btn.firstElementChild.id) };
+			delete_btn.firstElementChild.classList.add("delete-button");
+			const view_btn_container = document.createElement("td");
+			view_btn_container.innerHTML = "<button>View questions</button>";
+			view_btn_container.firstElementChild.addEventListener("click", function() { generate_question_table(test.name) });
+			view_btn_container.firstElementChild.classList.add("view-btn");
+			view_btn_container.firstElementChild.name = test.name;
 			row.appendChild(delete_btn);
 			row.appendChild(name);
 			row.appendChild(subject);
 			row.appendChild(num_questions);
-			row.appendChild(view_btn);
+			row.appendChild(view_btn_container);
 			table.appendChild(row);
 		});
 	}
@@ -178,11 +183,13 @@ const generate_question_table = (test_name) => {
 
 			const correct_obj = question.all_choices.find(choice => choice.correct === true);
 			const corr_choice_col = document.createElement("td");
+			corr_choice_col.classList.add("correct-choice-td");
 			corr_choice_col.textContent = (question.all_choices.indexOf(correct_obj) + 1) + ".) " + correct_obj.choice_val;
 
 			//delete question
 			const edit_col = document.createElement("button");
 			edit_col.textContent = "Edit";
+			edit_col.classList.add("edit-btn");
 			const button_col = document.createElement("button");
 			button_col.textContent = "Delete";
 			button_col.name = question.code;
@@ -197,10 +204,10 @@ const generate_question_table = (test_name) => {
 				if (question.all_choices[i].choice_val !== "") {
 					const choice_col = document.createElement("tr");
 					choice_col.textContent = `${i + 1}.) ` + question.all_choices[i].choice_val;
+					choice_col.classList.add("inner-tr");
 					ans_el.appendChild(choice_col);
 				}
 			}
-
 			row_el.appendChild(que_col);
 			row_el.appendChild(ans_el);
 			row_el.appendChild(corr_choice_col);

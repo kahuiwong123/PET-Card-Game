@@ -57,12 +57,12 @@
     border: none;
     border-radius: 5px;
     margin-top: 0px;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,28,171,1) 0%, rgba(0,212,255,1) 100%); 
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(0,212,255,1) 100%); 
 		transition: background 0.15s, padding 0.15s;
   }
   #student-button:hover{
     padding: 0px 55px;
-		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(9,64,33,1) 0%, rgba(8,206,187,1) 59%, 	rgba(0,212,255,1) 100%);
   }
   
   #student-form{
@@ -82,7 +82,7 @@
     margin-top:0px;
   }
   #teacher-button{
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(0,212,255,1) 100%); 
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,28,171,1) 0%, rgba(0,212,255,1) 100%);
     color:white;
     margin-top: 10px;
     padding: 0px 60px;
@@ -99,7 +99,7 @@
   }
   #teacher-button:hover{
     padding: 0px 55px;
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(9,64,33,1) 0%, rgba(8,206,187,1) 59%,    	rgba(0,212,255,1)     100%); 
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
   }
 
 	@keyframes append-animate {

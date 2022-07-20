@@ -1,4 +1,3 @@
-
 //Model
 const save_data = (key, data) => {
 	localStorage.setItem(key, JSON.stringify(data));
@@ -43,18 +42,30 @@ const code_exists = (code) => {
 }
 
 const assign_class = (class_el, codes_el) => {
+	let message = "";
+	let error_msg = "";
 	if (codes_el.length === 0) {
 		alert("Please select a student!");
 	} else {
 		const students = (Array.from(codes_el)).map(code_el => student_data.find(student => student.code === code_el.value));
 		students.forEach(student => {
 			if (student.classes.includes(class_el.value)) {
-				alert(`${student.name} is already in the ${class_el.value} class!`);
+				error_msg += student.name + ", ";
 			} else {
 				student.classes.push(class_el.value);
-				alert(`${student.name} has been added to the ${class_el.value} class!`);
+				message += student.name + ", ";
 			}
 		});
+		if (error_msg !== "") {
+			let plural;
+			error_msg.split(',').length - 1 === 1 ? plural = "is" : plural = "are";
+			alert(`${error_msg.slice(0, -2)} ${plural} already in the ${class_el.value} class!`);
+		}
+		if (message !== "") {
+			let plural;
+			message.split(',').length - 1 === 1 ? plural = "has" : plural = "have";
+			alert(`${message.slice(0, -2)} ${plural} been added to the ${class_el.value} class!`);
+		}
 		save_data("students", student_data);
 		generate_table();
 	}
@@ -100,7 +111,7 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 		error_container.innerHTML = `&#8226; ${wrong_class_msg.slice(0, -2)}'s subject ${plural} not correspond with the ${selected_class} class! <br>`;
 	}
 
-	if (!student_data.some(student => student.class === selected_class)) {
+	if (!student_data.some(student => student.classes.includes(selected_class))) {
 		error_container.innerHTML += `&#8226; the ${selected_class} class does not have any students! <br>`;
 	}
 
@@ -108,10 +119,10 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 		let error_message = "";
 		let correct_message = "";
 		selected_tests.forEach(test => {
-			if (student.tests.some(t => t.name === test.name)) {
+			if (student.tests.some(t => t.name === test.name)) { // if the student already has the test
 				error_message += test.name + ", ";
 			}
-			else if (student.class === selected_class) {
+			else if (student.classes.includes(selected_class)) {
 				student.tests.push(test);
 				correct_message += test.name + ", ";
 			}
@@ -198,9 +209,11 @@ const generate_class_option = () => {
 const show_cur_class = () => {
 	const curr_classes = document.getElementById("current-classes");
 	curr_classes.innerHTML = "";
-	let all_classes = classes_data.join(", ");
-	let node = document.createTextNode(all_classes.toUpperCase());
-	curr_classes.appendChild(node);
+	classes_data.forEach(clas => {
+		const list_el = document.createElement("li");
+		list_el.textContent = clas.toUpperCase();
+		curr_classes.appendChild(list_el);
+	});
 }
 
 const generate_table = () => {
@@ -238,7 +251,7 @@ const generate_table = () => {
 
 			const del_col = document.createElement("td");
 			del_col.classList.add("delete-btn-container");
-			
+
 			const button_col = document.createElement("button");
 			button_col.textContent = "Delete";
 			button_col.name = student.code;
@@ -249,6 +262,7 @@ const generate_table = () => {
 			row_el.appendChild(class_col);
 			row_el.appendChild(code_col);
 			row_el.appendChild(del_col);
+			row_el.classList.add("student-row-el");
 			table.appendChild(row_el);
 		});
 	}
