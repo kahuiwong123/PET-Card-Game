@@ -26,7 +26,7 @@ $(function() {
 		$(".triangle-icon:last").toggleClass("triangle-ccw");
 	});
 	generate_scoreboard(true);
-	$("#scoreboard-heading").on("click", function() {
+	$("#scoreboard-container").on("click", function() {
 		$(".scoreboard-class-tab").slideToggle(300, "swing");
 		$(".exam-info-tab").fadeOut(300, "swing");
 	});
@@ -83,24 +83,22 @@ const generate_scoreboard = (sort_val) => {
 	scoreboard.innerHTML = "";
 	student.classes.forEach(clas => {
 		const class_row_el = document.createElement("div");
-		class_row_el.innerHTML = `<i class="fa-solid fa-graduation-cap"></i> ${clas.toUpperCase()}`;
+		class_row_el.textContent = clas.toUpperCase();
 		class_row_el.classList.add("scoreboard-class-tab");
 		class_row_el.id = `${clas.toLowerCase()}-scores`;
 		scoreboard.appendChild(class_row_el);
-		generate_tests(class_row_el.id);
-		$(".scoreboard-class-tab").hide();
+		generate_tests(class_row_el.id, sort_val);
 		class_row_el.onclick = function() {
 			$(`div[name='${this.id}-exam']`).slideToggle(300, "linear");
 		};
 	});
 }
 
-const generate_tests = (class_id) => {
+const generate_tests = (class_id, sort_val) => {
 	const class_el = document.getElementById(class_id);
 	student.tests.forEach(test => {
 		if (test.subject === class_id.substr(0, class_id.indexOf('-'))) {
-			const test_row_el = create_html(`<div class='exam-info-tab' name='${class_id}-exam'></div>`);
-			test_row_el.innerHTML = `<i class="fa-solid fa-book"></i> ${(test.name).toUpperCase()}`;
+			const test_row_el = create_html(`<div class='exam-info-tab' name='${class_id}-exam'>${(test.name).toUpperCase()}</div>`);
 			test_row_el.id = `${test.name.toLowerCase()}-stats`;
 			const available_students = student_data.filter(s => (s.tests.some(t => t.name === test.name && t.scores.length !== 0)));
 			console.log(available_students);
@@ -122,9 +120,9 @@ generate_test_stats = (el_id, student_list, test_name) => {
 		const score_arr = student.tests.find(t => t.name === test_name).scores;
 		score_row_el.innerHTML = `
 						<p>${student_list.indexOf(student) + 1}</p> 
-						<p>${student.name} (${student.code})</p>	
+						<p>${student.name}</p>	
 						<p>${get_high_score(student, test_name)}</p>
-						<p>${get_time(get_quickest_time(student, test_name))}</p>
+						<p>${get_quickest_time(student, test_name)}</p>
 						<p>${score_arr[score_arr.length - 1].date}<p>
 						`;
 		test_el.appendChild(score_row_el);
@@ -150,8 +148,4 @@ const sort_by_competion_time = (student_list, test_name) => {
 	student_list.sort(function(a, b) {
 		return get_quickest_time(b, test_name) - get_quickest_time(a, test_name);
 	});
-}
-
-const get_time = seconds => {
-	return new Date(seconds * 1000).toISOString().substr(11, 8);
 }

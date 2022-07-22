@@ -103,3 +103,8 @@
     3. how do we make it so the student side feel more like a game. (make it so the progression through the test feel more game like.)
     4.(https://app.nearpod.com/presentation?pin=X58HG, https://wordwall.net/) <- example that makes it feel more like an game
     5. think about what makes a game fun? maybe progression?
+
+
+
+
+    1. come up with a lsit of things to do

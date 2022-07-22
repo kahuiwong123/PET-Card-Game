@@ -3,6 +3,7 @@ const save_data = (key, data) => {
 	localStorage.setItem(key, JSON.stringify(data));
 }
 
+
 const add_student = (name, code) => {
 	student_data.push({ name: name, classes: [], code: code, tests: [] });
 	student_data.sort((a, b) => (a.name < b.name) ? -1 : 1);
@@ -108,11 +109,13 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 	if (wrong_class_msg !== "") {
 		let plural;
 		wrong_class_msg.split(',').length - 1 === 1 ? plural = "do" : plural = "does";
-		error_container.innerHTML = `&#8226; ${wrong_class_msg.slice(0, -2)}'s subject ${plural} not correspond with the ${selected_class} class! <br>`;
+		// error_container.innerHTML = `&#8226; ${wrong_class_msg.slice(0, -2)}'s subject ${plural} not correspond with the ${selected_class} class! <br>`;
+		alert(`${wrong_class_msg.slice(0, -2)}'s subject ${plural} not correspond with the ${selected_class} class!`);
 	}
 
 	if (!student_data.some(student => student.classes.includes(selected_class))) {
-		error_container.innerHTML += `&#8226; the ${selected_class} class does not have any students! <br>`;
+		// error_container.innerHTML += `&#8226; the ${selected_class} class does not have any students! <br>`;
+		alert(`the ${selected_class} class does not have any students!`);
 	}
 
 	student_data.forEach(student => {
@@ -120,31 +123,47 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 		let correct_message = "";
 		selected_tests.forEach(test => {
 			if (student.tests.some(t => t.name === test.name)) { // if the student already has the test
+				student.tests = student.tests.filter(_test => {
+					if (_test.name === test.name) {
+						// student.tests.push(test);
+						// console.log(student.tests);
+						return false;
+
+					} else {
+						// console.log(student.tests);
+						return true;
+					}
+				});
+				// console.log(student.tests);
+				student.tests.push(test);
 				error_message += test.name + ", ";
+				save_data("students", student_data);
 			}
 			else if (student.classes.includes(selected_class)) {
 				student.tests.push(test);
 				correct_message += test.name + ", ";
+				save_data("students", student_data);
 			}
 		});
 
+		//err_message -> update when its the same exam
 		if (error_message !== "") {
 			let plural;
 			error_message.split(',').length - 1 === 1 ? plural = "is" : plural = "are";
-			error_container.innerHTML += `&#8226; ${error_message.slice(0, -2)} ${plural} already received by ${student.name}! <br>`;
+			// error_container.innerHTML += `&#8226; ${error_message.slice(0, -2)} ${plural} already received by ${student.name}! <br>`
+			alert(`${error_message.slice(0, -2)} ${plural} has been resent to ${student.name}!`);
 		}
 
 		if (correct_message !== "") {
 			let plural;
 			correct_message.split(',').length - 1 === 1 ? plural = "has" : plural = "have";
-			correct_container.innerHTML += `&#8227; ${correct_message.slice(0, -2)} ${plural} been assigned to ${student.name}! <br>`;
+			// correct_container.innerHTML += `&#8227; ${correct_message.slice(0, -2)} ${plural} been assigned to ${student.name}! <br>`;
+			alert(`${correct_message.slice(0, -2)} ${plural} been assigned to ${student.name}!`);
 		}
 	});
-	save_data("students", student_data);
 }
 
 //View
-// generate html elemnts when the page loads
 $(function() {
 	get_select_send_test();
 	get_student_codes();

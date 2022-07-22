@@ -8,7 +8,6 @@ const load_data = (key) => {
 	}
 }
 
-let classes = load_data("classes");
 let test_bank = load_data("test_bank");
 
 const add_question = (question, correct_choice, choices, question_code, test_name) => {
@@ -40,7 +39,7 @@ const delete_question = (button_name, test_name) => {
 }
 
 const save_test = (name, subject) => {
-	test_bank.push({ name: name.value, subject: subject.value, num_questions: 0, questions: [] });
+	test_bank.push({ name: name.value, subject: subject.value, num_questions: 0, questions: [], scores:[]});
 	save_data("test_bank", test_bank);
 	alert(`${name.value} has been added to the test bank!`);
 }
@@ -113,7 +112,7 @@ const get_select_test = () => {
 
 const get_class_options = () => {
 	const select_el = document.querySelector("#test-subject");
-	classes.forEach(clas => {
+	classes_data.forEach(clas => {
 		const option = document.createElement("option");
 		option.value = clas.toLowerCase();
 		option.textContent = clas.toUpperCase();

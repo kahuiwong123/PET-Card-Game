@@ -10,7 +10,9 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
-	<script src="jquery-3.6.0.min.js"></script>
+	<script src="script.js" defer></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -18,20 +20,17 @@
 		<h1 class="container-title">PET GAME</h1>
 		<div id="container-object">
 			<div id="student-container">
-				<button id="student-button" type="submit" onclick="student_inputs()">
+				<button id="student-button" type="submit">
 					<h2>Student</h2>
 				</button>
 			</div>
 			<div id="teacher-container">
-				<button id="teacher-button" type="submit" onclick="teacher_inputs()">
+				<button id="teacher-button" type="submit">
 					<h2>Teacher</h2>
 				</button>
 			</div>
 		</div>
 	</div>
-	<script src="script.js"></script>
-	<script src="Teacher/teacher_script.js"></script>
-	<script src="Teacher/Question/question_script.js"></script>
 </body>
 
 </html>

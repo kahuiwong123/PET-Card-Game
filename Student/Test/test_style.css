@@ -78,20 +78,25 @@ header {
 	height: 100%;
 }
 
-#answer-choices input {
+#answer-choices input,
+#end-page-body input {
 	text-align: left;
 	padding: 1em 0 1em 1em;
 	margin: 0 2rem;
 	font-size: 24px;
 	background-color: rgb(6, 87, 255);
 	border-color: rgb(29, 26, 26);
+	transition: background-color 0.15s, color 0.15s, margin 0.15s;
 }
 
 #answer-choices input:hover {
+	background-color: rgb(0, 62, 189);
+	color: #dddddd;
 	cursor: pointer;
+	margin: 0 2em;
 }
 
-#resume-btn {
+/* #resume-btn {
 	position: absolute;
 	bottom: 0;
 	right: 0;
@@ -100,7 +105,7 @@ header {
 	border-color: rgb(29, 26, 26);
 	border-radius: 4px;
 	cursor: pointer;
-}
+} */
 
 #game-container {
 	flex: 1;
@@ -110,4 +115,34 @@ header {
 hr {
 	width: 100%;
 	color: lightgray;
+}
+
+#end-page-body {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#end-page-body h1 {
+	font-size: 4rem;
+	vertical-align: middle;
+}
+
+#end-page-body input {
+	text-align: center;
+	width: 100%;
+	padding: 1em 0;
+	font-size: 32px;
+}
+
+#end-page-body input:hover {
+	background-color: rgb(0, 62, 189);
+	color: #dddddd;
+	cursor: pointer;
 }

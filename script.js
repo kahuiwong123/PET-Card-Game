@@ -1,29 +1,27 @@
 // Model
-let teacher_data = [{ username: "user", password: "pass" }];
-
-const load_student = () => {
-	const saved_students = JSON.parse(localStorage.getItem("students"));
-	if (Array.isArray(saved_students) && saved_students.length > 0) {
-		return saved_students;
-	} else {
-		return [];
+const load_info = (key, default_val) => {
+	const saved_data = JSON.parse(localStorage.getItem(key));
+	if (Array.isArray(saved_data) && saved_data.length > 0) {
+		return saved_data;
 	}
+	return default_val;
 }
 
-const load_classes = () => {
-	const saved_classes = JSON.parse(localStorage.getItem("classes"));
-  let default_classes = ["art", "english", "history", "math"];
-	if (Array.isArray(saved_classes) && saved_classes.length > 4) {
-		return saved_classes;
-	} else {
-		return default_classes;
-	}
+const save_info = (key, data) => {
+	localStorage.setItem(key, JSON.stringify(data));
 }
 
-let classes_data = load_classes();
-let student_data = load_student();
+let classes_data = load_info("classes", ["art", "english", "history", "math"]);
+let student_data = load_info("students", []);
+let teachers_data = [{ username: "user", password: "pass" }]; // placeholder
+
 
 // View
+$(function() {
+	$("#student-button").on("click", student_inputs);
+	$("#teacher-button").on("click", teacher_inputs);
+});
+
 const create_html = (html) => {
 	const template = document.createElement("template");
 	template.innerHTML = html.trim();
@@ -53,19 +51,16 @@ const teacher_inputs = () => {
 	if (typeof (teacher_form) === "undefined" || teacher_form === null) {
 		const inputs = create_html(`
     <div id="teacher-form">
-        <input id="teacher_user" type="text" placeholder="Username" onkeypress="teacher_login2(event)">
-        <input id="teacher_pass" type="password" placeholder="Password" onkeypress="teacher_login2(event)">
-        <button id="teacher-login" onclick="teacher_login()">Login</button>
+        <input id="teacher_user" type="text" placeholder="Username" onkeypress="teacher_login2(event)" required>
+        <input id="teacher_pass" type="password" placeholder="Password" onkeypress="teacher_login2(event)" required>
+        <button id="teacher-login" type="submit" onclick="teacher_login()">Login</button>
     </div>`
 		);
+		
 		container.appendChild(inputs);
 	} else {
 		container.removeChild(teacher_form);
 	}
-}
-
-const render_add_student = () => {
-
 }
 
 const clear_textbox = (textbox) => {
@@ -80,7 +75,7 @@ const validate_student = (s_name, s_code) => {
 }
 
 const validate_teacher = (user, pass) => {
-	return teacher_data.some(teacher => {
+	return teachers_data.some(teacher => {
 		return teacher.username === user && teacher.password === pass;
 	});
 }
@@ -89,7 +84,7 @@ const student_login = () => {
 	const student_name = document.getElementById("student_name");
 	const student_code = document.getElementById("student_code");
 	const log_in_btn = document.getElementById("student-login");
-	if (student_name.value == "" || student_code.value == "") {
+	if (student_name.value === "" || student_code.value === "") {
 		alert("One of the fields is empty! Please try again.");
 	}
 	else if (validate_student(student_name.value, student_code.value)) {
@@ -97,8 +92,8 @@ const student_login = () => {
 		log_in_btn.onclick = window.location.href = "Student/student.html";
 	} else {
 		alert("Wrong student login information! Please try again.");
-		student_name.value = "";
-		student_code.value = "";
+		clear_textbox(student_name);
+		clear_textbox(student_code);
 	}
 }
 
@@ -107,7 +102,6 @@ const student_login2 = (event) => {
 		student_login();
 	}
 }
-
 
 const teacher_login = () => {
 	const teacher_user = document.getElementById("teacher_user");
@@ -129,5 +123,12 @@ const teacher_login2 = (event) => {
 		teacher_login()
 	}
 }
+
+// export {student_data, classes_data, teachers_data, load_info, save_info, create_html};
+
+
+
+
+
 
 
