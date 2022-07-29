@@ -1,5 +1,4 @@
 //Model
-<<<<<<< HEAD
 // import { student_data, classes_data, teachers_data, load_info, save_info, create_html } from "../script.js";
 // import {test_bank} from "./Question/question_script.js";
 
@@ -27,37 +26,6 @@ const create_class = (class_name) => {
 	alert(`${class_name} successfully added!`);
 }
 
-=======
-const save_data = (key, data) => {
-	localStorage.setItem(key, JSON.stringify(data));
-}
-
-
-const add_student = (name, code) => {
-	student_data.push({ name: name, classes: [], code: code, tests: [] });
-	student_data.sort((a, b) => (a.name < b.name) ? -1 : 1);
-	save_data("students", student_data);
-	alert(`${name} successfully added!`);
-}
-const delete_student = (button_name) => {
-	student_data = student_data.filter(student => {
-		if (student.code === button_name) {
-			return false;
-		} else {
-			return true;
-		}
-	});
-	save_data("students", student_data);
-}
-
-const create_class = (class_name) => {
-	classes_data.push(class_name.toLowerCase());
-	classes_data.sort();
-	save_data("classes", classes_data);
-	alert(`${class_name} successfully added!`);
-}
-
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 
 const class_exists = (_class) => {
 	return classes_data.some(exist_class => {
@@ -97,11 +65,7 @@ const assign_class = (class_el, codes_el) => {
 			message.split(',').length - 1 === 1 ? plural = "has" : plural = "have";
 			alert(`${message.slice(0, -2)} ${plural} been added to the ${class_el.value} class!`);
 		}
-<<<<<<< HEAD
 		save_info("students", student_data);
-=======
-		save_data("students", student_data);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 		generate_table();
 	}
 }
@@ -119,11 +83,7 @@ const deassign_class = (class_el, codes_el) => {
 				alert(`${student.name} has been removed from the ${class_el.value} class!`);
 			}
 		});
-<<<<<<< HEAD
 		save_info("students", student_data);
-=======
-		save_data("students", student_data);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 		generate_table();
 	}
 }
@@ -175,20 +135,12 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 				// console.log(student.tests);
 				student.tests.push(test);
 				error_message += test.name + ", ";
-<<<<<<< HEAD
 				save_info("students", student_data);
-=======
-				save_data("students", student_data);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 			}
 			else if (student.classes.includes(selected_class)) {
 				student.tests.push(test);
 				correct_message += test.name + ", ";
-<<<<<<< HEAD
 				save_info("students", student_data);
-=======
-				save_data("students", student_data);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 			}
 		});
 
@@ -211,7 +163,6 @@ const confirm_send_test = (selected_tests_el, selected_class_el) => {
 
 //View
 $(function() {
-<<<<<<< HEAD
 	document.querySelector("#create-question-btn").addEventListener("click", function() { window.location.href = 'Question/question.html' });
 	document.querySelector("#log-out-btn").addEventListener("click", function() { window.location.href = '../Student/student.html' });
 	document.querySelector("#teacher-logout").addEventListener("click", function() { window.location.href = '../index.html' });
@@ -233,14 +184,6 @@ $(function() {
 		const student_info = selected_student.split("-");
 		window.location.href = `../Student/student.html?student_name=${student_info[0]}&student_code=${student_info[1]}&is_teacher=true`;
 	});
-=======
-	get_select_send_test();
-	get_student_codes();
-	generate_class_option();
-	$(".chzn-select").chosen();
-	generate_table();
-	show_cur_class();
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 });
 
 //generate options when adding a class to students 
@@ -256,7 +199,6 @@ const get_student_codes = () => {
 	$("#select-student-code").trigger("chosen:updated");
 }
 
-<<<<<<< HEAD
 const get_view_students = () => {
 	const select_el = document.querySelector("#select-view-student");
 	select_el.innerHTML = "";
@@ -265,8 +207,6 @@ const get_view_students = () => {
 	});
 }
 
-=======
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 // generate options in "Select tests to send" input
 const get_select_send_test = () => {
 	const select_container = document.getElementById("select-send-test");
@@ -342,7 +282,6 @@ const generate_table = () => {
 			} else {
 				class_col.textContent = "none"
 			}
-<<<<<<< HEAD
 
 			class_col.classList.add("table-col-2");
 
@@ -358,24 +297,6 @@ const generate_table = () => {
 			button_col.name = student.code;
 			del_col.appendChild(button_col);
 			button_col.addEventListener("click", function() { confirm_delete_student(button_col.name) });
-=======
-
-			class_col.classList.add("table-col-2");
-
-			const code_col = document.createElement("td");
-			code_col.textContent = student.code;
-			code_col.classList.add("table-col-3");
-
-			const del_col = document.createElement("td");
-			del_col.classList.add("delete-btn-container");
-
-			const button_col = document.createElement("button");
-			button_col.textContent = "Delete";
-			button_col.name = student.code;
-			button_col.onclick = function() { confirm_delete_student(button_col.name) };
-
-			del_col.appendChild(button_col);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 			row_el.appendChild(name_col);
 			row_el.appendChild(class_col);
 			row_el.appendChild(code_col);
@@ -396,30 +317,18 @@ const add_student_controller = () => {
 
 	if (student_name.value === "") {
 		alert("Student name cannot be empty!");
-<<<<<<< HEAD
 		return;
 	}
 	add_student(student_name.value, student_code);
 	generate_table();
 	get_view_students();
 	get_student_codes();
-=======
-	} else {
-		add_student(student_name.value, student_code);
-		clear_textbox(student_name);
-		generate_table();
-		get_student_codes();
-	}
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 const delete_student_controller = (button_name) => {
 	delete_student(button_name);
 	generate_table();
-<<<<<<< HEAD
 	get_view_students();
-=======
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	get_student_codes();
 }
 
@@ -430,11 +339,6 @@ const remove_class_controller = () => {
 		alert(`Default Class ${selected_class} can not be removed`);
 		return;
 	}
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	classes_data = classes_data.filter(_class => {
 		if (_class === selected_class && confirm("Confirm to remove class!")) {
 			alert(`${selected_class} has been removed`);
@@ -444,22 +348,12 @@ const remove_class_controller = () => {
 			return true;
 		}
 	});
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	student_data.forEach(student => {
 		student.classes = student.classes.filter(clas => { return clas !== selected_class });
 	});
 
-<<<<<<< HEAD
 	save_info("classes", classes_data);
 	save_info("students", student_data);
-=======
-	save_data("classes", classes_data);
-	save_data("students", student_data);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	show_cur_class();
 	generate_table();
 	generate_class_option();
@@ -486,39 +380,6 @@ const confirm_send_test_controller = () => {
 	const selected_class_el = document.getElementById("select-send-class");
 	const selected_tests_el = document.getElementById("select-send-test").selectedOptions;
 	confirm_send_test(selected_tests_el, selected_class_el);
-<<<<<<< HEAD
-=======
-}
-
-
-const add_class_controller = () => {
-	const class_name = document.getElementById("new_class_name");
-	if (class_name.value === "" || class_name.value === "") {
-		alert("Class Name cannot be empty!")
-	} else {
-		if (class_exists(class_name.value)) {
-			alert(`${class_name.value} already esist`);
-		} else if (confirm("Confirm to add class!") == true) {
-			create_class(class_name.value);
-			generate_class_option();
-			show_cur_class();
-		} else {
-			alert(`${class_name.value} has NOT been added`);
-		}
-	}
-}
-
-const assign_class_controller = () => {
-	const class_el = document.querySelector("#add-class-name");
-	const codes_el = document.querySelector("#select-student-code").selectedOptions;
-	assign_class(class_el, codes_el);
-}
-
-const deassign_class_controller = () => {
-	const class_el = document.querySelector("#add-class-name");
-	const codes_el = document.querySelector("#select-student-code").selectedOptions;
-	deassign_class(class_el, codes_el);
->>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 
