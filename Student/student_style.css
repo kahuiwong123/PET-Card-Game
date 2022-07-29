@@ -52,10 +52,13 @@ p {
 	margin-right: 1em;
 }
 
+<<<<<<< HEAD
 #nickname-container {
 	padding-right: 5rem;
 }
 
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 #page-header-right {
 	display: flex;
 	flex-direction: row;
@@ -72,6 +75,7 @@ p {
 }
 #log-out-btn{
   padding: 7px 25px;
+<<<<<<< HEAD
 	background-color: #4CAF50;
 	color: white;
 	border: 1px solid lightgray;
@@ -84,6 +88,9 @@ p {
 	background-color: #3d8d41;
 }
 
+=======
+}
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 #sidebar {
 	display: flex;
 	flex-direction: column;
@@ -96,6 +103,7 @@ p {
 	z-index: 10;
 }
 
+<<<<<<< HEAD
 #student-enroll {
 	height: 20%;
 	display: flex;
@@ -126,6 +134,8 @@ p {
 	width: 80%;
 }
 
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 #class-list {
 	width: 100%;
 	border: 1px solid lightgray;
@@ -146,8 +156,12 @@ p {
 }
 
 #class-list h3,
+<<<<<<< HEAD
 #student-calendar h3,
 #student-enroll h3 {
+=======
+#student-calendar h3 {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	margin: 0;
 	background-color: #4CAF50;
 	transition: transform 0.15s;
@@ -157,6 +171,7 @@ p {
 	transition: transform 0.3s;
 }
 
+<<<<<<< HEAD
 .class-tab {
 	text-align: center;
 	padding: 0.5rem;
@@ -171,6 +186,11 @@ p {
 #class-list h3,
 #student-calendar h3,
 #student-enroll h3 {
+=======
+.class-tab,
+#class-list h3,
+#student-calendar h3 {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	padding: 0.5rem 0 0.5rem 0.5rem;
 	transition: background-color 0.15s;
 	cursor: pointer;
@@ -183,14 +203,22 @@ p {
 }
 
 #class-list:hover,
+<<<<<<< HEAD
 #student-calendar:hover,
 #student-enroll: hover {
+=======
+#student-calendar:hover {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	border-color: black;
 }
 
 #class-list h3:hover,
+<<<<<<< HEAD
 #student-calendar h3:hover,
 #student-enroll h3:hover {
+=======
+#student-calendar h3:hover {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	background-color: #04AA6D;
 }
 
@@ -212,10 +240,14 @@ p {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+<<<<<<< HEAD
 }
 
 .test-info-tab:hover {
 	background-color: #9e9e9e !important;
+=======
+	background-color: #b2b2b2;
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 .test-info-tab a {
@@ -238,8 +270,14 @@ p {
 	transition: border-color 0.15s;
 	display: flex;
 	flex-direction: column;
+<<<<<<< HEAD
 	width: 100%;
 	overflow: auto;
+=======
+	left: 0;
+	bottom: 0;
+	width: 100%;
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 #student-calendar iframe {
@@ -308,12 +346,20 @@ p {
 }
 
 .scoreboard-class-tab {
+<<<<<<< HEAD
 	padding: 1rem;
+=======
+	padding: 1rem 0;
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	background-color: #6d6d6d;
 	cursor: pointer;
 	width: 100%;
 	font-size: 32px;
 	text-align: center;
+<<<<<<< HEAD
+=======
+	margin: 0;
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	margin-bottom: 0.3rem;
 	border-bottom: 2px solid lightgray;
 	transition: background-color 0.15s;
@@ -333,18 +379,22 @@ p {
 
 .student-statistics {
 	display: flex;
+<<<<<<< HEAD
 	flex-direction: column;
 }
 
 .student-stat-main,
 .student-prev-scores {
 	display: flex;
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	background-color: rgb(9, 193, 32);
 	width: 100%;
 	max-width: 100%;
 	font-size: 20px;
 	cursor: pointer;
 	align-items: center;
+<<<<<<< HEAD
 }
 
 .student-stat-main p:nth-child(1),
@@ -421,3 +471,32 @@ p {
   }
 }
 
+=======
+	justify-content: space-between;
+}
+
+.student-statistics p {
+	text-align: left;
+	padding-right: 1rem;
+}
+
+.student-statistics p:nth-child(1) {
+	flex: 1;
+	text-align: center;
+}
+
+.student-statistics p:nth-child(2) {
+	flex: 2.5;
+}
+
+.student-statistics p:nth-child(3),
+.student-statistics p:nth-child(4) {
+	flex: 2;
+}
+
+
+
+
+
+
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320

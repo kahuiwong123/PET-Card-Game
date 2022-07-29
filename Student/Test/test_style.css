@@ -5,7 +5,10 @@
 
 html, body {
 	height: 100%;
+<<<<<<< HEAD
 	overflow: hidden;
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 body {
@@ -97,10 +100,25 @@ header {
 	margin: 0 2em;
 }
 
+<<<<<<< HEAD
 #game-container {
 	display:flex;
 	flex-direction: column;
 	align-items: center;
+=======
+/* #resume-btn {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(6, 87, 255);
+	padding: 0.5rem;
+	border-color: rgb(29, 26, 26);
+	border-radius: 4px;
+	cursor: pointer;
+} */
+
+#game-container {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	flex: 1;
 	background-color: white;
 }
@@ -124,11 +142,15 @@ hr {
 
 #end-page-body h1 {
 	font-size: 4rem;
+<<<<<<< HEAD
 	margin: 0;
 }
 
 #end-page-body h2 {
 	font-size: 1.5rem;
+=======
+	vertical-align: middle;
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 }
 
 #end-page-body input {
@@ -143,6 +165,7 @@ hr {
 	color: #dddddd;
 	cursor: pointer;
 }
+<<<<<<< HEAD
 
 #total-time {
 	color: black;
@@ -151,3 +174,5 @@ hr {
 	width: 100%;
 	text-align: center;
 }
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320

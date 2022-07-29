@@ -1,6 +1,7 @@
 // Model
 const student_info = [];
 let student;
+<<<<<<< HEAD
 let num_trophies = 0;
 let is_teacher = false;
 
@@ -27,20 +28,27 @@ const confirm_enrollment_controller = () => {
 	generate_class_list();
 	generate_scoreboard();
 }
+=======
+// Controller 
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 
 
 // View
 $(function() {
 	const student_info_container = document.querySelector("#student-info-header");
+<<<<<<< HEAD
 	if (window.location.search.includes("is_teacher=true")) {
 		is_teacher = true;
 	}
+=======
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	new URLSearchParams(window.location.search).forEach((name, value) => {
 		student_info.push(name);
 		student_info_container.append(`${value.replace("_", " ")}: ${name} `); // prints student name and code on the top
 		student_info_container.append(document.createElement("br"));
 	});
 	student = student_data.find(student => student.name === student_info[0] && student.code === student_info[1]);
+<<<<<<< HEAD
 
 	if (is_teacher) {
 		document.body.style.backgroundColor = "lightblue"; 
@@ -68,23 +76,35 @@ $(function() {
 	document.querySelector("#confirm-enroll-btn").addEventListener("click", () => { confirm_enrollment_controller() });
 	$("#enroll-options").chosen();
 	generate_availabe_classes();
+=======
+	$("#welcome-header").text(`Welcome ${student.name}!`); // prints welcome text
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	generate_class_list();
 	generate_calendar();
 	$("#class-list h3").on("click", function() {
 		$(".class-tab, #class-list hr").slideToggle(300, "swing");
 		$(".test-info-tab").fadeOut(300, "swing");
+<<<<<<< HEAD
 		$(".triangle-icon:eq(1)").toggleClass("triangle-ccw");
+=======
+		$(".triangle-icon:first").toggleClass("triangle-ccw");
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	});
 	$("#student-calendar h3").on("click", function() {
 		$("#student-calendar iframe").slideToggle(300, "swing");
 		$(".triangle-icon:last").toggleClass("triangle-ccw");
 	});
+<<<<<<< HEAD
 	generate_scoreboard();
 	// $("#scoreboard-container, #scoreboard-container * ").addClass("remain");
+=======
+	generate_scoreboard(true);
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	$("#scoreboard-heading").on("click", function() {
 		$(".scoreboard-class-tab").slideToggle(300, "swing");
 		$(".exam-info-tab").fadeOut(300, "swing");
 	});
+<<<<<<< HEAD
 	generate_trophies();
 
 	document.querySelector("#nickname-btn").addEventListener("click", function() {
@@ -121,6 +141,10 @@ const generate_classes_to_enroll = () => {
 	$("#enroll-options").trigger("chosen:updated");
 }
 
+=======
+});
+
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 const generate_class_list = () => {
 	const class_list = document.querySelector("#class-list");
 	class_list.innerHTML = "<h3>My Classes <span class='triangle-icon' style='margin-right: 1rem;'>&#9660</span> </h3>";
@@ -129,8 +153,14 @@ const generate_class_list = () => {
 		list_el.textContent = clas.toUpperCase();
 		list_el.id = clas.toLowerCase();
 		list_el.classList.add("class-tab");
+<<<<<<< HEAD
 		class_list.appendChild(document.createElement("hr"));
 		// list_el.appendChild(triangle);
+=======
+		const triangle = create_html(`<span class='triangle-icon' name=${clas.toLowerCase()}-triangle style='margin-right: 1rem;'>&#9654</span>`);
+		class_list.appendChild(document.createElement("hr"));
+		list_el.appendChild(triangle);
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 		class_list.appendChild(list_el);
 		generate_class_tests(list_el.id);
 		list_el.onclick = function() {
@@ -150,7 +180,11 @@ const generate_class_tests = (el_id) => {
 				<p>${test.num_questions} Questions</p>
 				<a name='begin-${test.name}' href='Test/test.html?test=${test.name}&student_name=${student.name}&student_code=${student.code}'>Begin!</a>
 			</div>`);
+<<<<<<< HEAD
 			class_el.appendChild(tab_el);
+=======
+			class_el.parentNode.insertBefore(tab_el, class_el.nextSibling);
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 			$(".test-info-tab").hide(); // tabs are hidden initially
 		}
 	});
@@ -166,7 +200,11 @@ const generate_calendar = () => {
 	calendar_container.appendChild(calendar);
 }
 
+<<<<<<< HEAD
 const generate_scoreboard = () => {
+=======
+const generate_scoreboard = (sort_val) => {
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 	const scoreboard = document.querySelector("#scoreboard-body");
 	scoreboard.innerHTML = "";
 	student.classes.forEach(clas => {
@@ -177,9 +215,14 @@ const generate_scoreboard = () => {
 		scoreboard.appendChild(class_row_el);
 		generate_tests(class_row_el.id);
 		$(".scoreboard-class-tab").hide();
+<<<<<<< HEAD
 		class_row_el.onclick = function(e) {
 			$(`div[name='${this.id}-exam']`).slideToggle(300, "linear");
 			e.stopPropagation();
+=======
+		class_row_el.onclick = function() {
+			$(`div[name='${this.id}-exam']`).slideToggle(300, "linear");
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 		};
 	});
 }
@@ -192,6 +235,7 @@ const generate_tests = (class_id) => {
 			test_row_el.innerHTML = `<i class="fa-solid fa-book"></i> ${(test.name).toUpperCase()}`;
 			test_row_el.id = `${test.name.toLowerCase()}-stats`;
 			const available_students = student_data.filter(s => (s.tests.some(t => t.name === test.name && t.scores.length !== 0)));
+<<<<<<< HEAD
 			sort_by_high_score(available_students, test.name);
 			const test_header = create_html(`
 			<div class='student-stat-main'>	
@@ -210,6 +254,15 @@ const generate_tests = (class_id) => {
 			test_row_el.onclick = function(e) {
 				$(`div[name='${this.id}-line']`).slideToggle(300, "linear");
 				e.stopPropagation();
+=======
+			console.log(available_students);
+			sort_by_high_score(available_students, test.name);
+			class_el.parentNode.insertBefore(test_row_el, class_el.nextSibling);
+			generate_test_stats(test_row_el.id, available_students, test.name);
+			$(".exam-info-tab").hide();
+			test_row_el.onclick = function() {
+				$(`div[name='${this.id}-line']`).slideToggle(300, "linear");
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 			}
 		}
 	});
@@ -217,6 +270,7 @@ const generate_tests = (class_id) => {
 
 generate_test_stats = (el_id, student_list, test_name) => {
 	const test_el = document.getElementById(el_id);
+<<<<<<< HEAD
 	student_list.forEach(stu => {
 		const name_val = (stu.nickname === "" || is_teacher) ? `${stu.name} (${stu.code})` : stu.nickname;
 		const name = (stu.name === student.name && stu.code === student.code) ? `▶ ${name_val}` : name_val; // arrow for current student
@@ -280,16 +334,41 @@ const generate_trophies = () => {
 	}
 }
 
+=======
+	student_list.forEach(student => {
+		const score_row_el = create_html(`<div class='student-statistics' name='${el_id}-line'></div>`);
+		const score_arr = student.tests.find(t => t.name === test_name).scores;
+		score_row_el.innerHTML = `
+						<p>${student_list.indexOf(student) + 1}</p> 
+						<p>${student.name} (${student.code})</p>	
+						<p>${get_high_score(student, test_name)}</p>
+						<p>${get_time(get_quickest_time(student, test_name))}</p>
+						<p>${score_arr[score_arr.length - 1].date}<p>
+						`;
+		test_el.appendChild(score_row_el);
+		$(".student-statistics").hide();
+	});
+}
+
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 const get_high_score = (student, test_name) => {
 	return Math.max.apply(null, student.tests.find(test => test.name === test_name).scores.map(score => score.score_val));
 }
 
+<<<<<<< HEAD
+=======
+const get_quickest_time = (student, test_name) => {
+	return Math.min.apply(null, student.tests.find(test => test.name === test_name).scores.map(score => score.completion_time));
+}
+
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
 const sort_by_high_score = (student_list, test_name) => {
 	student_list.sort(function(a, b) {
 		return get_high_score(b, test_name) - get_high_score(a, test_name);
 	});
 }
 
+<<<<<<< HEAD
 const get_score_obj = (score_arr) => {
 	score_arr.sort(function(b, a) {
 		if (a.score_val !== b.score_val) return (a.score_val < b.score_val) ? -1 : 1;
@@ -298,3 +377,14 @@ const get_score_obj = (score_arr) => {
 	});
 }
 
+=======
+const sort_by_competion_time = (student_list, test_name) => {
+	student_list.sort(function(a, b) {
+		return get_quickest_time(b, test_name) - get_quickest_time(a, test_name);
+	});
+}
+
+const get_time = seconds => {
+	return new Date(seconds * 1000).toISOString().substr(11, 8);
+}
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320

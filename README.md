@@ -107,9 +107,13 @@
 
 
 
+<<<<<<< HEAD
     1. come up with a lsit of things to do
 
 
 
 
     
+=======
+    1. come up with a lsit of things to do
+>>>>>>> 7b92dbdd6763da55aaa321e7de8c273ec0545320
