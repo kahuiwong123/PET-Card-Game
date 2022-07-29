@@ -1,0 +1,14 @@
+{
+  "name": "gullibletriviallint",
+  "version": "1.0.0",
+  "description": "<!--- Description --->   * [Features](#features)   * [Todos](#todos)   * [Ideas](#ideas)   * [Changelog](#changelog) # Features   <p align=\"center\">Landing Page</p>",
+  "main": "chosen.jquery.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^6.4.6"
+  }
+}

@@ -1,0 +1,153 @@
+* {
+	font-family: 'Nova Square', cursive;
+	color: white;
+}
+
+html, body {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background-color: rgb(29, 26, 26);
+}
+
+body, div {
+	margin: 0;
+}
+
+#main-container {
+	display: flex;
+	height: 100vh;
+}
+
+#test-container {
+	flex: 1.3;
+/* 	border-right: 1px solid black; */
+	position: relative;
+	height: 100%;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	font-size: 2rem;
+	height: 10%;
+	align-items: center;
+	margin: 0.5rem 2rem 0 2rem;
+}
+
+#question-body {
+/* 	border: 1px solid red; */
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+}
+
+#progress-container {
+	display: flex;
+	align-items: center;
+}
+
+#progress-bar {
+	height: 2rem;
+	width: 15rem;
+	border: 0.2rem solid rgb(11, 223, 36);
+	border-radius: 1rem;
+	margin-right: 1rem;
+	overflow: hidden;
+}
+
+#green-progress {
+	width: 10%;
+	height: 100%;
+	background-color: rgb(11, 223, 36);
+	border: none;
+}
+
+#question-title {
+	text-align: left;
+	font-size: 2rem;
+	margin-left: 2rem;
+}
+
+#answer-choices {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	width: 100%;
+	height: 100%;
+}
+
+#answer-choices input,
+#end-page-body input {
+	text-align: left;
+	padding: 1em 0 1em 1em;
+	margin: 0 2rem;
+	font-size: 24px;
+	background-color: rgb(6, 87, 255);
+	border-color: rgb(29, 26, 26);
+	transition: background-color 0.15s, color 0.15s, margin 0.15s;
+}
+
+#answer-choices input:hover {
+	background-color: rgb(0, 62, 189);
+	color: #dddddd;
+	cursor: pointer;
+	margin: 0 2em;
+}
+
+#game-container {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+	background-color: white;
+}
+
+hr {
+	width: 100%;
+	color: lightgray;
+}
+
+#end-page-body {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#end-page-body h1 {
+	font-size: 4rem;
+	margin: 0;
+}
+
+#end-page-body h2 {
+	font-size: 1.5rem;
+}
+
+#end-page-body input {
+	text-align: center;
+	width: 100%;
+	padding: 1em 0;
+	font-size: 32px;
+}
+
+#end-page-body input:hover {
+	background-color: rgb(0, 62, 189);
+	color: #dddddd;
+	cursor: pointer;
+}
+
+#total-time {
+	color: black;
+	font-size: 2rem;
+	height: 10%;
+	width: 100%;
+	text-align: center;
+}

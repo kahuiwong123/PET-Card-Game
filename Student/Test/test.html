@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Game</title>
+	<link rel="stylesheet" href="test_style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+	<script src="../../default_info.js" defer></script>
+	<script src="./test_script.js" defer></script>
+	<script src="../../jquery-3.6.0.min.js"></script>
+	<script src="https://kit.fontawesome.com/82f219145d.js" crossorigin="anonymous"></script>
+	<script src="../../script.js" defer></script>
+	<script src="../../Teacher/Question/question_script.js" defer></script>
+</head>
+
+<body>
+	<main id="main-container">
+
+		<section id="test-container">
+			<header>
+				<div id="progress-container">
+					<div id="progress-bar">
+						<div id="green-progress"></div>
+					</div>
+					<div id="progress-text"></div>
+				</div>
+				<div id="timer"></div>
+			</header>
+
+			<div id="question-body">
+				<h1 id="question-title"></h1> <!-- generate question -->
+				<hr>
+				<form id="answer-choices"></form> <!-- generate answer choices -->
+			</div>
+
+			<!--<input id="resume-btn" type="button" value="Resume Later"> -->
+		</section>
+
+		<section id="game-container">
+			<div id="total-time">
+
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

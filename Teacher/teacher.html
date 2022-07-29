@@ -1,73 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Teacher Page</title>
-        <link rel="stylesheet" href="teacher_style.css" />
-    </head>
 
-    <body>
-        <main id="teacher-page-container">
-          <div id="dashboard-header-container">
-            <div id="dashboard-header">
-                <h1 id="teacher-heading">Welcome user!</h1>
-                <div id="header-buttons">
-                    <div id="question-bank-btn">
-                        <button id="create-question-btn" class=" header-button">Question Bank</button>
-                    </div>
-                    <div id="teacher-lougot-btn">
-                        <button id="teacher-logout" class=" header-button">Log out</button>
-                    </div>
-                </div>
-            </div>
-          </div>
-            <div id="dashboard-upper">
-                <div id="teacher-creation-bar">
-                    <div id="teacher-sudent-controls">
-                        <div id="teacher-sudent-info">
-                            <span
-                                >Student Name:
-                                <input
-                                    id="stu-fullname"
-                                    type="text"
-                                    placeholder="Student Name"
-                                />
-                            </span>
-                            <span
-                                >Class:
-                                <select
-                                    id="add-class-name"
-                                    type="text"
-                                    placeholder="Class"
-                                >
-                                    <option value="math">Math</option>
-                                    <option value="enlgish">English</option>
-                                    <option value="art">Art</option>
-                                    <option value="history">History</option>
-                                </select>
-                            </span>
-                        </div>
-                        <button
-                            id="teacher-add-stu"
-                            onclick="add_student_controller()"
-                        >
-                            Add Student
-                        </button>
-                    </div>
-                </div>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Teacher Page</title>
+	<link rel="stylesheet" href="teacher_style.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../chosen.min.css">
+	<script src="../jquery-3.6.0.min.js"></script>
+	<script src="../chosen.jquery.min.js"></script>
+	<script src="../default_info.js" defer></script>
+	<script src="../script.js" defer></script>
+	<script src="Question/question_script.js" defer></script>
+	<script src="teacher_script.js" defer></script>
+</head>
 
-                <div id="student-stats-section">Student Statistics</div>
-            </div>
-            <div id="currently-added">
-                <div id="currently-added-students">
-                    <h2>Students</h2>
-                    <table id="student-info-table"></table>
-                </div>
-            </div>
-        </main>
-        <script src="teacher_script.js"></script>
-        <script src="../script.js"></script>
-    </body>
+<body>
+	<main id="teacher-page-container">
+		<div id="dashboard-header-container">
+			<div id="dashboard-header">
+				<h1 id="teacher-heading">Dashboard</h1>
+				<div id="header-buttons">
+					<div id="class-control-btns">
+						<button id="create-class-btn-header" class="header-button">View Class</button>
+						<button id="create-question-btn" class="header-button">View
+							Questions</button>
+						<button id="log-out-btn">Student Preview</button>
+					</div>
+					<div id="teacher-lougot-btn">
+						<button id="teacher-logout" class=" header-button">Log out</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="dash-body-container">
+			<div id="welcome-text">Welcome back, user!</div>
+			<div id="dash-body">
+				<div id="dashboard-upper">
+					<div id="upper-dash-container">
+						<div id="teacher-creation-bar">
+							<div id="teacher-sudent-controls">
+								<div id="classes-placeholder">
+									<form id="send-test-form">
+
+										<label for="select-send-test">Send</label>
+
+										<select data-placeholder="Select tests to send" id="select-send-test" class="chzn-select scroll"
+											multiple></select>
+
+										<label for="select-send-class">to</label>
+										<select id="select-send-class">
+										</select>
+										<button id="confirm-send-btn" type="button">Confirm</button>
+
+									</form>
+									<div id="send-error"></div>
+									<div id="correct-msg"></div>
+								</div>
+
+								<div id="teacher-student-info">
+									<div id="add-student-bar">
+										<div>
+											<label for="stu-fullname">Create New Student: </label>
+											<input id="stu-fullname" type="text" placeholder="Student Name">
+										</div>
+										<button id="teacher-add-stu">Add Student</button>
+									</div>
+
+									<div id="add-class-bar">
+										<select data-placeholder="Select students" id="select-student-code" class="chzn-select"
+											multiple></select>
+										<div>
+											<label for="add-class">Select</label>
+											<select id="add-class-name"></select>
+										</div>
+										<div id="class-btn-container">
+											<button id="assign-class-btn">Assign class</button>
+											<button id="deassign-class-btn">Delete class</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div id="student-stats-section">
+							<h2>Student Statistics</h2>
+							<div id="student-view-container">
+								<label for="select-view-student">View: </label>
+								<select id="select-view-student">
+									
+								</select>
+								<button id="view-student-btn">Confirm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div id="dashboard-lower">
+					<div id="all-classes">
+						<h2>Class Settings</h2>
+						<form>
+							<label for="class_name">Create New Class: </label>
+							<input type="text" id="new_class_name" placeholder="Class name">
+							<input type="button" id="create-class-btn" value="Create Class">
+						</form>
+
+						<form>
+							<label for="rem_class">Remove Class: </label>
+							<select id="remove_class_sel">
+							</select>
+							<input type="button" id="remove-class-btn" value="Remove Class">
+						</form>
+
+
+
+						<div id="create-class-msg"></div><br>
+						<h2>Available classes</h2>
+						<ul id="current-classes"></ul>
+					</div>
+
+
+					<div id="currently-added">
+						<h2>Students</h2>
+						<div id="scroll-table">
+							<table id="student-info-table"></table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+
 </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Student Page</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="student_style.css">
+	<link rel="stylesheet" href="../chosen.min.css">
+	<script src="../jquery-3.6.0.min.js"></script>
+	<script src="../chosen.jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/82f219145d.js" crossorigin="anonymous"></script>
+	<script src="../default_info.js"></script>
+	<script src="../script.js" defer></script>
+	<script src="student_script.js" defer></script>
+	<script src="../Teacher/Question/question_script.js" defer></script>
+</head>
+
+<body>
+	<header id="page-header">
+		<div id="page-header-left">
+			<img id="pet-ico"
+				src="//images.squarespace-cdn.com/content/v1/55f8a7d8e4b0c432ff779320/826f8016-beb9-45a0-b79e-12994e1b0891/PE+Long+Logo.png?format=2500w">
+			<h1 id="welcome-header"></h1>
+		</div>
+		<div id="nickname-container">
+			<label for="nickname-input">Enter Nickname: </label>
+			<input id="nickname-input">
+			<button id="nickname-btn">Confirm</button>
+		</div>
+		<div id="page-header-right">
+			<div id="student-info-header"></div>
+			<button id="log-out-btn" onclick="window.location.href='../index.html'">Log out</button>
+		</div>
+	</header>
+	<div id="student-info">
+		<aside id="sidebar">
+			<section id="student-enroll">
+				<h3>Enroll <span class='triangle-icon' style='margin-right: 1rem;'>&#9660</h3>
+				<div id="student-div">
+					<select data-placeholder='Select classes to enroll...' id='enroll-options' multiple>
+					</select>
+					<button id="confirm-enroll-btn">Confirm</button>
+				</div>
+			</section>
+			<section id="class-list"></section>
+			<section id="student-calendar"></section>
+		</aside>
+
+		<main id="scoreboard-container">
+			<h1 id="scoreboard-heading"><i class="fa-solid fa-trophy"></i> Scoreboard</h1>
+			<div id="scoreboard-body"></div>
+		</main>
+
+		<div id="trophy-container">
+			<div id="trophy-shelf"></div>
+		</div>
+	</div>
+</body>
+
+</html>

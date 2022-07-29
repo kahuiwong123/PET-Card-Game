@@ -1,6 +1,10 @@
   body{
     background-color: #1f263b;
   }
+
+	* {
+		font-family: 'Nova Square';
+	}
   button:hover {
     cursor:pointer;
   }
@@ -10,71 +14,111 @@
     
     background: none;
     outline:none;
-    color:black;
+    color: slategrey;
     
     border: 2px solid slategrey;
     border-radius: 5px;
     padding: 2px 0px;
+
+     cursor: pointer;
   }
-  input:hover{
-    border: 2px solid black;
+  input:hover, input:focus{
+    border: 2px solid white;
+    color:white;
   }
-  .container{
+
+  #container{
     display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .container-title{
     display:flex;
     margin-top:5%;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10%;
+    margin-bottom: 6%;
+		color: white;
+		font-size: 4rem;
   }
+
   #student-container{
     display:flex;
     flex-direction:column;
-    
+    margin-bottom:15px;
     align-items: center;
+    justify-content: center;
     height: 167px;
   }
   #student-button{
-    background-color:blue;
     color:white;
     padding: 0px 60px;
     border: none;
     border-radius: 5px;
     margin-top: 0px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(0,212,255,1) 100%); 
+		transition: background 0.15s, padding 0.15s;
   }
   #student-button:hover{
     padding: 0px 55px;
-    background-color: lightblue;
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(22,194,61,1) 0%, rgba(9,64,33,1) 0%, rgba(8,206,187,1) 59%, 	rgba(0,212,255,1) 100%);
   }
   
   #student-form{
     display:flex;
     flex-direction:column;
     margin-top: 10px;
+		transform-origin: 50% 0;
+	  animation: append-animate .3s linear;
   }
   
   #teacher-container{
     display:flex;
     flex-direction:column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 158px;
+    margin-top:0px;
   }
   #teacher-button{
-    background-color:green;
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,28,171,1) 0%, rgba(0,212,255,1) 100%);
     color:white;
     margin-top: 10px;
     padding: 0px 60px;
     border: none;
     border-radius: 5px;
+		transition: background 0.15s, padding 0.15s;
   }
   #teacher-form{
     display:flex;
     flex-direction:column;
     margin-top: 10px;
+		transform-origin: 50% 0;
+	  animation: append-animate .3s linear;
   }
   #teacher-button:hover{
     padding: 0px 55px;
-    background-color: lightgreen;
+		background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
   }
+
+	@keyframes append-animate {
+		from {
+			transform: scaleY(0);
+			opacity: 0;
+		}
+		to {
+			transform: scaleY(1);
+			opacity: 1;
+		}
+ }
+
+#container-object{
+  border: 1px solid white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 275px;
+  border-radius: 5px;
+  /* background-color:white; */
+  height:341px;
+}
